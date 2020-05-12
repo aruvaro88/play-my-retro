@@ -1,0 +1,8 @@
+.event-list .card{
+    margin-bottom: 30px;
+}
+
+.event-list img{
+    height: 160px;
+    object-fit: cover;
+}
