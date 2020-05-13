@@ -7,6 +7,7 @@ import EventList from "./pages/eventList/EvenList"
 import EventDetails from "./pages/eventDetails/EventDetails"
 import EventForm from "./pages/eventForm/EventForm"
 import NavBar from "./ui/navbar/NavBar"
+import SignupForm from "./pages/signup/SignUp"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/events" exact render={() => <EventList />} />
         <Route path="/events/createEvent" render={() => <EventForm />} />
         <Route path="/events/:id" render={(props) => <EventDetails {...props} />} />
+        <Route path="/signup" render={() => <SignupForm />} />
       </Switch>
       </>
   )

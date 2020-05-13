@@ -22,7 +22,7 @@ const makeEvent = (ownerId) => {
     address: faker.address.streetAddress(),
     date: "10/10/2020",
     assistants: [],
-    photo: faker.image.business(),
+    photo: faker.random.image(),
     platforms: faker.random.arrayElement(["SNES", "Sega Megadrive", "Sega Saturn", "Arcade"]),
     game: "Street Fighter II",
     owner: ownerId,

@@ -19,7 +19,7 @@ require('./configs/locals.config')(app)
 
 // Base URLS
 app.use('/', require('./routes/index.routes'))
-app.use('/', require('./routes/auth.routes'))
+app.use('/api', require('./routes/auth.routes'))
 app.use('/api/events', require('./routes/events.routes'))
 
 module.exports = app

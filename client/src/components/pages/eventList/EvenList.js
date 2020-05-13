@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
+import Toast from "react-bootstrap/Toast"
 
 import "./EventList.css"
 
@@ -14,19 +15,35 @@ class EventList extends Component {
     super()
     this.state = {
       modalShow: false,
+      toast: {
+        show: false,
+        text: "",
+      },
       events: [],
     }
-    this.service = new EventService()
+    this.eventService = new EventService()
   }
 
-  showModal = () => this.setState({ modalShow: true })
-  modalClose = () => this.setState({ modalShow: false })
+  handleModal = (visible) => this.setState({ modalShow: visible })
+
+  handleToast = (visible, text = "") => {
+    const toastCopy = { ...this.state.toast }
+    toastCopy.show = visible
+    toastCopy.text = text
+    this.setState({ toast: toastCopy })
+  }
 
   getAllEvents = () => {
-    this.service
+    this.eventService
       .getAllEvents()
       .then((response) => this.setState({ events: response.data }))
       .catch((err) => console.log(err))
+  }
+
+  finishEventPost = () => {
+    this.getAllEvents()
+    this.handleModal(false)
+    this.handleToast(true, "Evento creado correctamente")
   }
   componentDidMount = () => {
     this.getAllEvents()
@@ -35,7 +52,7 @@ class EventList extends Component {
     return (
       <Container as="section">
         <h1>Lista de eventos</h1>
-        <Button onClick={this.showModal} variant="dark">
+        <Button onClick={() => this.handleModal(true)} variant="dark">
           Create new event
         </Button>
         <Row className="event-list">
@@ -44,11 +61,18 @@ class EventList extends Component {
           ))}
         </Row>
 
-        <Modal show={this.state.modalShow} onHide={this.modalClose}>
+        <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
           <Modal.Body>
-            <EventForm hideModalWindow={this.modalClose} refreshEventList={this.getAllEvents}/>
+            <EventForm finishEventPost={this.finishEventPost} closeModal={()=> this.handleModal(false)} />
           </Modal.Body>
         </Modal>
+
+        <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>
+          <Toast.Header>
+            <strong className="mr-auto">Message</strong>
+          </Toast.Header>
+          <Toast.Body>{this.state.toast.text}</Toast.Body>
+        </Toast>
       </Container>
     )
   }

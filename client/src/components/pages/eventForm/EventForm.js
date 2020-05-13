@@ -18,21 +18,19 @@ class EventForm extends Component {
     }
     this.service = new EventService()
   }
+
   handleChange = (e) => {
     const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
     this.setState({
       [e.target.name]: value,
     })
   }
-  finishAction = () => {
-    this.props.hideModalWindow()
-    this.props.refreshEventList()
-  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.service
       .createEvent(this.state)
-      .then(() => this.finishAction())
+      .then(() => this.props.finishEventPost())
       .catch((err) => console.log(err))
   }
 
@@ -60,10 +58,10 @@ class EventForm extends Component {
           </Form.Group>
           {/* <Form.Group controlId="formBasicCheckbox">
             <Form.Label>Platforms</Form.Label>
-            <Form.Check name="platforms" checked={this.state.platforms} onChange={this.handleChange} type="checkbox" label="SNES" />
-            <Form.Check name="platforms" checked={this.state.platforms} onChange={this.handleChange} type="checkbox" label="Sega Megadrive" />
-            <Form.Check name="platforms" checked={this.state.platforms} onChange={this.handleChange} type="checkbox" label="Sega Saturn" />
-            <Form.Check name="platforms" checked={this.state.platforms} onChange={this.handleChange} type="checkbox" label="Arcade" />
+            <Form.Check name="platforms" checked="SNES" onChange={this.handleChange} type="checkbox" label="SNES" />
+            <Form.Check name="platforms" checked="Sega Megadrive" onChange={this.handleChange} type="checkbox" label="Sega Megadrive" />
+            <Form.Check name="platforms" checked="Sega Saturn" onChange={this.handleChange} type="checkbox" label="Sega Saturn" />
+            <Form.Check name="platforms" checked="Arcade" onChange={this.handleChange} type="checkbox" label="Arcade" />
           </Form.Group> */}
           <Form.Group controlId="game">
             <Form.Label>Game</Form.Label>
@@ -76,6 +74,9 @@ class EventForm extends Component {
 
           <Button variant="dark" type="submit">
             Create Event
+          </Button>
+          <Button onClick={()=>this.props.closeModal()} variant="dark">
+            Close
           </Button>
         </Form>
       </Container>
