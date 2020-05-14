@@ -26,7 +26,7 @@ class Home extends Component {
             </Col>
             <Col as="article" md={6}>
               <figure className="gameController">
-                <img src="/img/game-controller.svg" />
+                <img src="/img/game-controller.svg" alt="gameController" />
               </figure>
             </Col>
           </Row>
@@ -35,28 +35,28 @@ class Home extends Component {
             <article className="displayCard">
               <article className="homeCard">
                 <figure className="icon">
-                  <img src="/img/edit-tools.svg" />
+                  <img src="/img/edit-tools.svg" alt="signupicon"/>
                 </figure>
                 <h4>Sign Up</h4>
                 <p>Get into our awesome comunity</p>
               </article>
               <article className="homeCard">
                 <figure className="icon">
-                  <img className="calendar" src="/img/calendar-day-solid.svg" />
+                  <img className="calendar" src="/img/calendar-day-solid.svg" alt="createicon"/>
                 </figure>
                 <h4>Create Events</h4>
                 <p>Create events to play videogames</p>
               </article>
               <article className="homeCard">
                 <figure className="icon">
-                  <img src="/img/gamepad-solid.svg" />
+                  <img src="/img/gamepad-solid.svg" alt="playicon"/>
                 </figure>
                 <h4>Play</h4>
                 <p>Assist to other events and play with people</p>
               </article>
               <article className="homeCard">
                 <figure className="icon">
-                  <img src="/img/comments-solid.svg" />
+                  <img src="/img/comments-solid.svg" alt="commenticon"/>
                 </figure>
                 <h4>Comments</h4>
                 <p>Write about events you liked most</p>
@@ -67,7 +67,7 @@ class Home extends Component {
             <Col as="article" md={6}>
               <article>
                 <figure className="composition">
-                  <img src="/img/games-comp.png"></img>
+                  <img src="/img/games-comp.png" alt="compositionimg"/>
                 </figure>
               </article>
             </Col>

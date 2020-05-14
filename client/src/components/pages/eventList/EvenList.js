@@ -15,11 +15,11 @@ class EventList extends Component {
     super()
     this.state = {
       modalShow: false,
+      events: [],
       toast: {
         show: false,
         text: "",
       },
-      events: [],
     }
     this.eventService = new EventService()
   }

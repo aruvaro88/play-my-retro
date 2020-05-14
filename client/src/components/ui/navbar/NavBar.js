@@ -28,6 +28,9 @@ class NavBar extends Component {
               <Nav.Link as="div">
                 <Link to="/events">Events</Link>
               </Nav.Link>
+              <Nav.Link as="div">
+                <Link to="/signup">Sign Up</Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

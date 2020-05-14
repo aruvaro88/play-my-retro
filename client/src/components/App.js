@@ -18,8 +18,8 @@ function App() {
         <Route path="/" exact render={() => <Home />} />
         <Route path="/events" exact render={() => <EventList />} />
         <Route path="/events/createEvent" render={() => <EventForm />} />
-        <Route path="/events/:id" render={(props) => <EventDetails {...props} />} />
         <Route path="/signup" render={() => <SignupForm />} />
+        <Route path="/events/:id" render={(props) => <EventDetails {...props} />} />
       </Switch>
       <Footer />
     </>
