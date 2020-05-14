@@ -1,0 +1,122 @@
+.homepage {
+    background-image: url("/img/bkg.svg");
+    background-position: top;
+    padding: 40px 0px 150px;
+    background-repeat: no-repeat;
+}
+
+.homepage h1 {
+    color: #1292B9;
+    font-size: 60px;
+    letter-spacing: 5px;
+    line-height: 60px;
+}
+
+.homepage h3 {
+    font-family: 'Share Tech Mono',
+        monospace;
+    color: #666665;
+    font-size: 36px;
+    letter-spacing: 3px;
+    line-height: 42px;
+}
+
+.homepage .homeHeader {
+    padding: 200px 0 0;
+}
+
+.homepage .gameController {
+    width: 427px;
+    margin: 0 auto;
+}
+
+.works {
+    margin-top:214px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.displayCard {
+    width: 1169px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 48px;
+}
+
+.homepage .homeCard {
+    width: 269px;
+    background-color: #F5F6F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    min-height: 310px;
+}
+
+.homeCard .icon {
+    height: 63px;
+    width: 57px;
+    margin-top: 53px;
+    margin-bottom: 34px;
+}
+
+.homeCard .calendar {
+    width: 45px;
+    margin: 0 auto;
+    object-position: center;
+}
+
+.homeCard h4 {
+    color: #1292B9;
+    font-family: "VT323",
+        sans-serif;
+    font-size: 36px;
+    letter-spacing: 3px;
+    line-height: 36px;
+    margin-bottom: 11px;
+    text-align: center;
+}
+
+.homeCard p {
+    color: #867F79;
+    font-family: 'Share Tech Mono',
+        monospace;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    line-height: 21px;
+    text-align: center;
+}
+.everyGame{
+    margin-top: 214px;
+}
+.everyGame .composition {
+
+    height: 361px;
+    width: 568px;
+}
+
+.everyGame .gameText {
+    margin-left: 29px;
+}
+
+.everyGame .gameText h3 {
+    color: #1292B9;
+    font-family: "VT323",
+        sans-serif;
+    font-size: 50px;
+    letter-spacing: 4.17px;
+    line-height: 50px;
+}
+
+.everyGame .gameText p {
+    font-family: 'Share Tech Mono',
+        monospace;
+    color: #666665;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    line-height: 20px;
+    margin-top: 29px;
+    margin-bottom:30px;
+}

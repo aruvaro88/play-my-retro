@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 const salt = bcrypt.genSaltSync(bcryptSalt)
 
-mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.REMOTEDB, { useNewUrlParser: true, useUnifiedTopology: true })
 User.collection.drop()
 Event.collection.drop()
 Comment.collection.drop()
