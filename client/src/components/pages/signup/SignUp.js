@@ -15,6 +15,7 @@ class SignupForm extends Component {
         username: "",
         password: "",
       },
+      platforms: [],
       errorMessage: "",
     }
     this.authService = new AuthService()
@@ -27,11 +28,22 @@ class SignupForm extends Component {
     this.setState({ loginInfo: loginInfoCopy })
   }
 
+  handleChecks = (e) => {
+    let newPlatforms = [...this.state.platforms]
+    if (e.target.checked) {
+      newPlatforms.push(e.target.value)
+      this.setState({ platforms: newPlatforms })
+    } else {
+      let subPlatform = newPlatforms.filter((platform) => platform !== e.target.value)
+      this.setState({ platforms: subPlatform })
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.authService
       .signup(this.state.loginInfo)
-      .then(response => {
+      .then((response) => {
         this.props.setTheUser(response.data)
         this.props.history.push("/")
       })
@@ -54,7 +66,16 @@ class SignupForm extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} />
               </Form.Group>
-              <p className="error-message" style={{display: this.state.errorMessage ? "block" : "none"}}>{this.state.errorMessage}</p>
+              <Form.Group controlId="formBasicCheckbox">
+                <Form.Label>Platforms</Form.Label>
+                <Form.Check inline name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
+                <Form.Check inline name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
+                <Form.Check inline name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
+                <Form.Check inline name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+              </Form.Group>
+              <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
+                {this.state.errorMessage}
+              </p>
               <Button variant="dark" type="submit">
                 Sign up
               </Button>
