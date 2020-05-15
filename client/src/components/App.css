@@ -44,3 +44,10 @@ img{
   display: block;
   width: 100%;
 }
+
+.error-message{
+  background:red;
+  color: white;
+  
+
+}

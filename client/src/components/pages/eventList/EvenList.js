@@ -52,9 +52,10 @@ class EventList extends Component {
     return (
       <Container as="section">
         <h1>Lista de eventos</h1>
-        <Button onClick={() => this.handleModal(true)} variant="dark">
+        {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark">
           Create new event
-        </Button>
+        </Button>}
+
         <Row className="event-list">
           {this.state.events.map((elm) => (
             <EventCard key={elm._id} {...elm} />

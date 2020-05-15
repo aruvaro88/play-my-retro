@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom"
 
-class SignupForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,11 +30,11 @@ class SignupForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.authService
-      .signup(this.state.loginInfo)
-      .then(response => {
-        this.props.setTheUser(response.data)
-        this.props.history.push("/")
-      })
+      .login(this.state.loginInfo)
+        .then(response => {
+            this.props.setTheUser(response.data)
+            this.props.history.push("/")
+        })
       .catch((err) => this.setState({ errorMessage: err.response.data.message }))
   }
 
@@ -43,7 +43,7 @@ class SignupForm extends Component {
       <Container as="section">
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
-            <h1>Sign Up</h1>
+            <h1>Login</h1>
             <hr />
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="username">
@@ -54,14 +54,16 @@ class SignupForm extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} />
               </Form.Group>
-              <p className="error-message" style={{display: this.state.errorMessage ? "block" : "none"}}>{this.state.errorMessage}</p>
+              <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
+                {this.state.errorMessage}
+              </p>
               <Button variant="dark" type="submit">
-                Sign up
+                Log In
               </Button>
             </Form>
             <p>
               <small>
-                Have an account already? <Link to="/login">Log In</Link>
+                Don't you have an account? <Link to="/signup">Sign Up</Link>
               </small>
             </p>
           </Col>
@@ -71,4 +73,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm
+export default LoginForm
