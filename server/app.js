@@ -23,6 +23,6 @@ app.use('/', require('./routes/index.routes'))
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api/events', require('./routes/events.routes'))
 app.use((req, res) => {
-  res.sendFile(__dirname + "/public/index.htmls")
+  res.sendFile(__dirname + "/public/index.html")
 })
 module.exports = app
