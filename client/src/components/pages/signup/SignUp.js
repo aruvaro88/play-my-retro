@@ -7,8 +7,8 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
 class SignupForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       username: "",
       password: "",
@@ -16,9 +16,16 @@ class SignupForm extends Component {
     this.authService = new AuthService()
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.authService
+      .signup(this.state)
+      .then(() => this.props.history.push("/"))
+      .catch((err) => console.log(err))
   }
 
   render() {
