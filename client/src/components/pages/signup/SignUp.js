@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import AuthService from "../../../services/auth.service"
+import FileService from "../../../services/file.service"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
@@ -14,11 +15,13 @@ class SignupForm extends Component {
       loginInfo: {
         username: "",
         password: "",
+        avatar: "",
+        platforms: [],
       },
-      platforms: [],
       errorMessage: "",
     }
     this.authService = new AuthService()
+    this.fileService = new FileService()
   }
 
   handleChange = (e) => {
@@ -29,14 +32,29 @@ class SignupForm extends Component {
   }
 
   handleChecks = (e) => {
-    let newPlatforms = [...this.state.platforms]
+    let newPlatforms = [...this.state.loginInfo.platforms]
     if (e.target.checked) {
       newPlatforms.push(e.target.value)
-      this.setState({ platforms: newPlatforms })
+      this.setState({ loginInfo: { ...this.state.loginInfo, platforms: newPlatforms }})
     } else {
       let subPlatform = newPlatforms.filter((platform) => platform !== e.target.value)
-      this.setState({ platforms: subPlatform })
+      this.setState({ loginInfo: { ...this.state.loginInfo, platforms: subPlatform }})
     }
+  }
+
+  handleFileUpload  = (e) => {
+    const uploadData = new FormData()
+    uploadData.append("avatar", e.target.files[0])
+    this.fileService
+      .handleAvatarUser(uploadData)
+      .then((response) => {
+        console.log("Subida de archivo finalizada! La URL de Cloudinray es: ", response.data.secure_url)
+        console.log(response.data)
+        this.setState({
+          loginInfo: { ...this.state.loginInfo, avatar: response.data.secure_url },
+        })
+      })
+      .catch((err) => console.log(err))
   }
 
   handleSubmit = (e) => {
@@ -68,10 +86,14 @@ class SignupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicCheckbox">
                 <Form.Label>Platforms</Form.Label>
-                <Form.Check inline name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
-                <Form.Check inline name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
-                <Form.Check inline name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
-                <Form.Check inline name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+                <Form.Check name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
+                <Form.Check name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
+                <Form.Check name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
+                <Form.Check name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+              </Form.Group>
+              <Form.Group controlId="img">
+                <Form.Label>Imagen (URL)</Form.Label>
+                <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
               </Form.Group>
               <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
                 {this.state.errorMessage}

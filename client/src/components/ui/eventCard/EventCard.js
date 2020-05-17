@@ -5,18 +5,26 @@ import { Link } from "react-router-dom"
 
 const EventCard = (props) => {
   return (
-    <Col lg={3} md={6}>
-      <Card as="article" className="event-card">
-        <Card.Img variant="top" src={props.photo} />
-        <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>{props.description}</Card.Text>
-                  <Link to={`/events/${props._id}`} className="btn btn-dark btn-block">
+    <article className="event-card">
+      <figure className="card-img">
+        <img src={props.photo} alt="meh" />
+      </figure>
+      <article className="card-content">
+        <h4>{props.title}</h4>
+        <p>{props.platforms}</p>
+        <p>{props.game}</p>
+        <div className="card-buttons">
+          <Link to={`/events/${props._id}`} className="myButton">
             Event details
           </Link>
-        </Card.Body>
-      </Card>
-    </Col>
+          {props.loggedInUser._id === props.owner && (
+            <Link onClick={() => props.removeEvent(props._id)} className="myButton">
+              Remove Event
+            </Link>
+          )}
+        </div>
+      </article>
+    </article>
   )
 }
 

@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import Toast from "react-bootstrap/Toast"
+import {Link} from "react-router-dom"
 
 import "./EventList.css"
 
@@ -45,36 +46,50 @@ class EventList extends Component {
     this.handleModal(false)
     this.handleToast(true, "Evento creado correctamente")
   }
+
+  removeEvent = (eventId) => {
+    this.eventService
+      .removeEvent(eventId)
+      .then(() => {
+        this.getAllEvents()
+      })
+      .catch((err) => console.log(err))
+  }
+
   componentDidMount = () => {
     this.getAllEvents()
   }
   render() {
     return (
-      <Container as="section">
-        <h1>Lista de eventos</h1>
-        {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark">
-          Create new event
-        </Button>}
+      <main className="event-list">
+        <Container as="section">
+          <h1>Check community Events!</h1>
+          {this.props.loggedInUser && (
+            <Link onClick={() => this.handleModal(true)} className="myButtonBlue">
+              Create new event
+            </Link>
+          )}
 
-        <Row className="event-list">
-          {this.state.events.map((elm) => (
-            <EventCard key={elm._id} {...elm} />
-          ))}
-        </Row>
+          <Row className="event-cards">
+            {this.state.events.map((elm) => (
+              <EventCard key={elm._id} {...elm} loggedInUser={this.props.loggedInUser} removeEvent={() => this.removeEvent(elm._id)} />
+            ))}
+          </Row>
 
-        <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
-          <Modal.Body>
-            <EventForm finishEventPost={this.finishEventPost} closeModal={()=> this.handleModal(false)} />
-          </Modal.Body>
-        </Modal>
+          <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
+            <Modal.Body>
+              <EventForm loggedInUser={this.props.loggedInUser} finishEventPost={this.finishEventPost} closeModal={() => this.handleModal(false)} />
+            </Modal.Body>
+          </Modal>
 
-        <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>
-          <Toast.Header>
-            <strong className="mr-auto">Message</strong>
-          </Toast.Header>
-          <Toast.Body>{this.state.toast.text}</Toast.Body>
-        </Toast>
-      </Container>
+          <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>
+            <Toast.Header>
+              <strong className="mr-auto">Message</strong>
+            </Toast.Header>
+            <Toast.Body>{this.state.toast.text}</Toast.Body>
+          </Toast>
+        </Container>
+      </main>
     )
   }
 }

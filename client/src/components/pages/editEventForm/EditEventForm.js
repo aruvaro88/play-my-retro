@@ -5,18 +5,18 @@ import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 
-class EventForm extends Component {
+class EditEventForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: "",
-      description: "",
-      address: "",
-      date: "",
-      platforms: [],
-      game: "",
-      photo: "",
-      owner: this.props.loggedInUser._id
+      title: this.props.title,
+      description: this.props.description,
+      address: this.props.address,
+      date: this.props.date,
+      platforms: this.props.platforms,
+      game: this.props.game,
+      photo: this.props.photo,
+      owner: this.props.loggedInUser._id,
     }
     this.eventService = new EventService()
     this.fileService = new FileService()
@@ -32,10 +32,11 @@ class EventForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.eventService
-      .createEvent(this.state)
+      .editEvent(this.props._id, this.state)
       .then(() => this.props.finishEventPost())
       .catch((err) => console.log(err))
   }
+
   handleChecks = (e) => {
     let newPlatforms = [...this.state.platforms]
     if (e.target.checked) {
@@ -60,6 +61,7 @@ class EventForm extends Component {
   }
 
   render() {
+
     return (
       <Container as="section">
         <h1>New Event</h1>
@@ -98,7 +100,7 @@ class EventForm extends Component {
           </Form.Group>
 
           <Button variant="dark" type="submit">
-            Create Event
+            Edit Event
           </Button>
           <Button onClick={() => this.props.closeModal()} variant="dark">
             Close
@@ -109,4 +111,4 @@ class EventForm extends Component {
   }
 }
 
-export default EventForm
+export default EditEventForm

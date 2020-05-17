@@ -41,8 +41,11 @@ class App extends Component {
           <Route path="/events/createEvent" render={() => <EventForm />} />
           <Route path="/signup" render={(props) => <SignupForm {...props} setTheUser={this.setTheUser} />} />
           <Route path="/login" render={(props) => <LoginForm {...props} setTheUser={this.setTheUser} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/login"/>} />
-          <Route path="/events/:id" render={(props) => <EventDetails {...props} />} />
+          <Route
+            path="/profile"
+            render={() => (this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/login" />)}
+          />
+          <Route path="/events/:id" render={(props) => <EventDetails {...props} loggedInUser={this.state.loggedInUser} />} />
         </Switch>
         <Footer />
       </>

@@ -12,7 +12,8 @@ h2 {
 
 
 p {
-  font-family: "Ubuntu", sans-serif;
+   font-family: 'Share Tech Mono',
+   monospace;
   font-weight: 400;
 }
 
@@ -24,9 +25,8 @@ p {
   width: 350px;
 }
 
-.myButton {
 
-  height: 58px;
+.myButton {
   width: 197px;
   background-color: #CB295F;
   color: #FFFFFF;
@@ -37,8 +37,20 @@ p {
   line-height: 18px;
   text-align: center;
   padding: 10px 30px;
-
 }
+.myButtonBlue {
+  width: 197px;
+  background-color: #0D7282;
+  color: #FFFFFF;
+  font-family: "VT323",
+    sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  line-height: 18px;
+  text-align: center;
+  padding: 10px 30px;
+}
+
 
 img{
   display: block;

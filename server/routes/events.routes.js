@@ -22,4 +22,17 @@ router.post("/createEvent", (req, res, next) => {
     .catch((err) => console.log(err))
 })
 
+router.post("/removeEvent/:id", (req, res, next) => {
+  Event.findByIdAndRemove(req.params.id)
+    .populate("owner")
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err))
+})
+router.post("/editEvent/:id", (req, res, next) => {
+  Event.findByIdAndUpdate(req.params.id, req.body)
+    .populate("owner")
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err))
+})
+
 module.exports = router
