@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom"
-import "./LoginForm.css"
 
 class LoginForm extends Component {
   constructor(props) {
@@ -41,35 +40,37 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Container as="section" clasName="login-form">
-        <Row>
-          <Col md={{ span: 4, offset: 4 }}>
-            <h1>Login</h1>
-            <hr />
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
-              </Form.Group>
-              <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
-                {this.state.errorMessage}
+      <main className="login-form">
+        <Container as="section">
+          <Row>
+            <Col md={{ span: 4, offset: 4 }}>
+              <h1>Login</h1>
+              <hr />
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="username">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="password">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+                <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
+                  {this.state.errorMessage}
+                </p>
+                <Button className="myButton" type="submit">
+                  Log In
+                </Button>
+              </Form>
+              <p>
+                <small>
+                  Don't you have an account? <Link to="/signup">Sign Up</Link>
+                </small>
               </p>
-              <Button className="myButton" type="submit">
-                Log In
-              </Button>
-            </Form>
-            <p>
-              <small>
-                Don't you have an account? <Link to="/signup">Sign Up</Link>
-              </small>
-            </p>
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+          </Row>
+        </Container>
+      </main>
     )
   }
 }

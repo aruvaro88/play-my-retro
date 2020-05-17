@@ -3,4 +3,11 @@
     flex-direction: column;
     padding: 24px;
     background-color: #F5F6F9;
+    margin-bottom: 18px;
+}
+.comment-card  h4{
+ color: #1292B9
+}
+.comment-card p,small {
+   color: #867F79
 }

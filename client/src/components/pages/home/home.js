@@ -19,7 +19,7 @@ class Home extends Component {
           <Row as="header" className="homeHeader">
             <Col as="article" md={6}>
               <h1>Play My Retro</h1>
-              <h3>Where games and people met</h3>
+              <h3>Where games and people meet</h3>
               <Link to="/" className="myButton">
                 Get Started
               </Link>

@@ -70,46 +70,48 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <Container as="section">
-        <Row>
-          <Col md={{ span: 4, offset: 4 }}>
-            <h1>Sign Up</h1>
-            <hr />
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Label>Platforms</Form.Label>
-                <Form.Check name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
-                <Form.Check name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
-                <Form.Check name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
-                <Form.Check name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
-              </Form.Group>
-              <Form.Group controlId="img">
-                <Form.Label>Imagen (URL)</Form.Label>
-                <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
-              </Form.Group>
-              <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
-                {this.state.errorMessage}
+      <main className="signup-form">
+        <Container as="section">
+          <Row>
+            <Col md={{ span: 4, offset: 4 }}>
+              <h1>Sign Up</h1>
+              <hr />
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="username">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="password">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Label>Platforms</Form.Label>
+                  <Form.Check name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
+                  <Form.Check name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
+                  <Form.Check name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
+                  <Form.Check name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+                </Form.Group>
+                <Form.Group controlId="img">
+                  <Form.Label>Imagen (URL)</Form.Label>
+                  <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
+                </Form.Group>
+                <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
+                  {this.state.errorMessage}
+                </p>
+                <button className="myButton" type="submit">
+                  Sign up
+                </button>
+              </Form>
+              <p>
+                <small>
+                  Have an account already? <Link to="/login">Log In</Link>
+                </small>
               </p>
-              <Button variant="dark" type="submit">
-                Sign up
-              </Button>
-            </Form>
-            <p>
-              <small>
-                Have an account already? <Link to="/login">Log In</Link>
-              </small>
-            </p>
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+          </Row>
+        </Container>
+      </main>
     )
   }
 }
