@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { Component } from "react"
+import ProfileNav from "../profileNav/ProfileNav"
 
-const Profile = (props) => {
-    return <h1>Welcome to your profile, {props.loggedInUser.username}</h1>
-    
+class Profile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
-} 
-
-   
+  render() {
+    return (
+      <>
+        <ProfileNav {...this.props} loggedInUser={this.props.loggedInUser} />
+      </>
+    )
+  }
+}
 
 export default Profile

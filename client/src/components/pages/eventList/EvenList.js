@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Modal from "react-bootstrap/Modal"
 import Toast from "react-bootstrap/Toast"
-import {Link} from "react-router-dom"
 
 import "./EventList.css"
 
@@ -64,9 +63,9 @@ class EventList extends Component {
         <Container as="section">
           <h1>Check community Events!</h1>
           {this.props.loggedInUser && (
-            <Link to="" onClick={() => this.handleModal(true)} className="myButtonBlue">
+            <button onClick={() => this.handleModal(true)} className="myButtonBlue">
               Create new event
-            </Link>
+            </button>
           )}
 
           <Row className="event-cards">

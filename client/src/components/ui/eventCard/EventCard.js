@@ -16,9 +16,9 @@ const EventCard = (props) => {
             Event details
           </Link>
           {props.loggedInUser._id === props.owner && (
-            <Link  to="" onClick={() => props.removeEvent(props._id)} className="myButton">
+            <button onClick={() => props.removeEvent(props._id)} className="myButton">
               Remove Event
-            </Link>
+            </button>
           )}
         </div>
       </article>

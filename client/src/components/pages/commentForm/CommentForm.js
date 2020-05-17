@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import CommentService from "../../../services/comment.service"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 
 class CommentForm extends Component {
   constructor(props) {

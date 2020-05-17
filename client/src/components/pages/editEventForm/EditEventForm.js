@@ -3,7 +3,6 @@ import EventService from "../../../services/event.service"
 import FileService from "../../../services/file.service"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 
 class EditEventForm extends Component {
   constructor(props) {
