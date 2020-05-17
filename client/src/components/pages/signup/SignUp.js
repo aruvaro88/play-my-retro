@@ -78,11 +78,11 @@ class SignupForm extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleChange} />
+                <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} />
+                <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
               </Form.Group>
               <Form.Group controlId="formBasicCheckbox">
                 <Form.Label>Platforms</Form.Label>

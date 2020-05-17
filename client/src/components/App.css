@@ -2,18 +2,19 @@ body {
   font-family: 'Share Tech Mono',
     monospace;
   font-weight: 100;
-  margin:0;
+  margin: 0;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: "VT323", sans-serif;
 }
 
 
 p {
-   font-family: 'Share Tech Mono',
-   monospace;
+  font-family: 'Share Tech Mono',
+    monospace;
   font-weight: 400;
 }
 
@@ -25,6 +26,12 @@ p {
   width: 350px;
 }
 
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 
 .myButton {
   width: 197px;
@@ -37,29 +44,61 @@ p {
   line-height: 18px;
   text-align: center;
   padding: 10px 30px;
+  display: block;
 }
-.myButtonBlue {
-  width: 197px;
-  background-color: #0D7282;
-  color: #FFFFFF;
+
+.myMiniButton {
+  color: #1292B9;
   font-family: "VT323",
     sans-serif;
   font-size: 18px;
   letter-spacing: 1.5px;
   line-height: 18px;
-  text-align: center;
   padding: 10px 30px;
+  display: block;
+}
+
+.myButtonBlue {
+  background-color: #1292B9;
+   width: 197px;
+   color: #FFFFFF;
+   font-family: "VT323",
+   sans-serif;
+   font-size: 18px;
+   letter-spacing: 1.5px;
+   line-height: 18px;
+   text-align: center;
+   padding: 10px 30px;
+   display: block;
+}
+.form-buttons{
+  margin-top: 50px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
-img{
+img {
   display: block;
   width: 100%;
 }
 
-.error-message{
-  background:red;
+.error-message {
+  background: red;
   color: white;
-  
+}
 
+.input {
+  background-color: rgba(182, 181, 202, 0.37);
+  border-bottom: 3px solid #1292B9;
+}
+
+.modal-backdrop {
+  background-color: rgba(18, 146, 185, 0.5);
+  backdrop-filter: blur(10px)
+}
+
+.myModal .modal-content{
+  padding: 24px;
 }

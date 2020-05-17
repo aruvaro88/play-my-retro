@@ -1,6 +1,4 @@
 import React from "react"
-import Card from "react-bootstrap/Card"
-import Col from "react-bootstrap/Col"
 import { Link } from "react-router-dom"
 
 const EventCard = (props) => {
@@ -18,7 +16,7 @@ const EventCard = (props) => {
             Event details
           </Link>
           {props.loggedInUser._id === props.owner && (
-            <Link onClick={() => props.removeEvent(props._id)} className="myButton">
+            <Link  to="" onClick={() => props.removeEvent(props._id)} className="myButton">
               Remove Event
             </Link>
           )}

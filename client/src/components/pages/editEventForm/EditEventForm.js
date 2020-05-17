@@ -69,19 +69,19 @@ class EditEventForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
-            <Form.Control name="title" type="text" value={this.state.title} onChange={this.handleChange} />
+            <Form.Control className="input" name="title" type="text" value={this.state.title} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
-            <Form.Control name="description" type="textarea" value={this.state.description} onChange={this.handleChange} />
+            <Form.Control className="input" name="description" type="textarea" value={this.state.description} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
-            <Form.Control name="address" type="text" value={this.state.address} onChange={this.handleChange} />
+            <Form.Control className="input" name="address" type="text" value={this.state.address} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="date">
             <Form.Label>Date</Form.Label>
-            <Form.Control name="date" type="date" value={this.state.date} onChange={this.handleChange} />
+            <Form.Control className="input" name="date" type="date" value={this.state.date} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="formBasicCheckbox">
             <Form.Label>Platforms</Form.Label>
@@ -92,19 +92,20 @@ class EditEventForm extends Component {
           </Form.Group>
           <Form.Group controlId="game">
             <Form.Label>Game</Form.Label>
-            <Form.Control name="game" type="text" value={this.state.game} onChange={this.handleChange} />
+            <Form.Control className="input" name="game" type="text" value={this.state.game} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="photo">
             <Form.Label>Photo</Form.Label>
-            <Form.Control name="photo" type="file" onChange={this.handleFileUpload} />
+            <Form.Control className="input" name="photo" type="file" onChange={this.handleFileUpload} />
           </Form.Group>
-
-          <Button variant="dark" type="submit">
-            Edit Event
-          </Button>
-          <Button onClick={() => this.props.closeModal()} variant="dark">
-            Close
-          </Button>
+          <div className="form-buttons">
+            <button className="myButton" type="submit">
+              Edit Event
+            </button>
+            <button onClick={() => this.props.closeModal()} className="myMiniButton">
+              Close
+            </button>
+          </div>
         </Form>
       </Container>
     )
