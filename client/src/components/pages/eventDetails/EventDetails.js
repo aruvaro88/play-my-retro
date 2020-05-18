@@ -105,9 +105,9 @@ class EventDetails extends Component {
           <h1>{this.state.title}</h1>
           <h2>{this.state.date}</h2>
           <h2>{this.state.game}</h2>
-          <Link to="" className="myButton">
+          <button className="myButton">
             I'm in!
-          </Link>
+          </button>
           <figure className="details-img">
             <img src={this.state.photo} alt={this.state.title} />
           </figure>

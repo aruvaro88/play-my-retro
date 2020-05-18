@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
-import { Switch, Route, Redirect } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import Home from "./pages/home/home"
 import EventList from "./pages/eventList/EvenList"
 import EventDetails from "./pages/eventDetails/EventDetails"
@@ -43,9 +43,9 @@ class App extends Component {
           <Route path="/login" render={(props) => <LoginForm {...props} setTheUser={this.setTheUser} />} />
           <Route
             path="/profile"
-            render={() => (this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/login" />)}
+            render={(props) => (this.state.loggedInUser ? <Profile {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} /> : <LoginForm {...props} setTheUser={this.setTheUser} />)}
           />
-          <Route path="/events/:id" render={(props) => <EventDetails {...props} loggedInUser={this.state.loggedInUser} />} />
+          <Route path="/events/:id" exact render={(props) => <EventDetails {...props} loggedInUser={this.state.loggedInUser} />} />
         </Switch>
         <Footer />
       </>

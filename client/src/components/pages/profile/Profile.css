@@ -1,0 +1,16 @@
+.display-profile {
+    display: flex;
+}
+
+.profileNav {
+    width: 20%;
+    height: 95vh;
+    position: fixed;
+    background-color: lightblue;
+}
+
+.profile-content {
+    margin-left: 20%;
+    width: 80%;
+    background-color: lightyellow;
+}

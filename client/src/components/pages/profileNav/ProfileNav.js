@@ -1,29 +1,20 @@
-import React, { Component } from "react"
-import "./ProfileNav.css"
+import React from "react"
+import {Link} from "react-router-dom"
 
-class ProfileNav extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-
-  render() {
-    console.log(this.props)
-    return (
-      <main className="display-profile">
-        <section className="profileNav">
-                <figure>
-                   <img src={this.props.loggedInUser.avatar} alt="avatar"/>
-                </figure>
-                <h5>{this.props.loggedInUser.username}</h5>
-                <small>{this.props.loggedInUser.email}</small>
-        </section>
-        <section className="profile-content">
-          <h1>content</h1>
-        </section>
-      </main>
-    )
-  }
+const ProfileNav = (props) => {
+  console.log(props.loggedInUser._id)
+  return (
+    <>
+      <figure>
+        <img src={props.loggedInUser.avatar} alt="avatar" />
+      </figure>
+      <h5>{props.loggedInUser.username}</h5>
+      <Link to="/profile/edit" className="myButton">Edit profile</Link>
+      <button className="myButton">Users followed</button>
+      <Link to={`/profile/events/getuserevents`} className="myButton">My Events</Link>
+      <button className="myButton">LogOut</button>
+    </>
+  )
 }
 
 export default ProfileNav

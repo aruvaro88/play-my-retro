@@ -1,73 +1,62 @@
 import React, { Component } from "react"
-import AuthService from "../../../services/auth.service"
 import FileService from "../../../services/file.service"
+import UserService from "../../../services/user.services"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import { Link } from "react-router-dom"
 
-class SignupForm extends Component {
+class EditProfileForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loginInfo: {
-        username: "",
-        password: "",
-        avatar: "",
-        platforms: [],
-      },
-      errorMessage: "",
+      avatar: this.props.loggedInUser.avatar,
+      username: this.props.loggedInUser.username,
+      platforms: this.props.loggedInUser.platforms,
     }
-    this.authService = new AuthService()
     this.fileService = new FileService()
+    this.userService = new UserService()
   }
-
   handleChange = (e) => {
-    let loginInfoCopy = { ...this.state.loginInfo }
-    const { name, value } = e.target
-    loginInfoCopy = { ...loginInfoCopy, [name]: value }
-    this.setState({ loginInfo: loginInfoCopy })
-  }
-
-  handleChecks = (e) => {
-    let newPlatforms = [...this.state.loginInfo.platforms]
-    if (e.target.checked) {
-      newPlatforms.push(e.target.value)
-      this.setState({ loginInfo: { ...this.state.loginInfo, platforms: newPlatforms }})
-    } else {
-      let subPlatform = newPlatforms.filter((platform) => platform !== e.target.value)
-      this.setState({ loginInfo: { ...this.state.loginInfo, platforms: subPlatform }})
-    }
-  }
-
-  handleFileUpload  = (e) => {
-    const uploadData = new FormData()
-    uploadData.append("avatar", e.target.files[0])
-    this.fileService
-      .handleAvatarUser(uploadData)
-      .then((response) => {
-        console.log("Subida de archivo finalizada! La URL de Cloudinray es: ", response.data.secure_url)
-        console.log(response.data)
-        this.setState({
-          loginInfo: { ...this.state.loginInfo, avatar: response.data.secure_url },
-        })
-      })
-      .catch((err) => console.log(err))
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
+    this.setState({
+      [e.target.name]: value,
+    })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.authService
-      .signup(this.state.loginInfo)
+    this.userService
+      .editUser(this.props.loggedInUser._id, this.state)
+      .then((response) => this.props.setTheUser(response.data))
+      .catch((err) => console.log(err))
+  }
+
+  handleChecks = (e) => {
+    let newPlatforms = [...this.state.platforms]
+    if (e.target.checked) {
+      newPlatforms.push(e.target.value)
+      this.setState({ ...this.state, platforms: newPlatforms })
+    } else {
+      let subPlatform = newPlatforms.filter((platform) => platform !== e.target.value)
+      this.setState({ ...this.state, platforms: subPlatform })
+    }
+  }
+
+  handleFileUpload = (e) => {
+    const uploadData = new FormData()
+    uploadData.append("photo", e.target.files[0])
+    this.fileService
+      .handlePhotoEvent(uploadData)
       .then((response) => {
-        this.props.setTheUser(response.data)
-        this.props.history.push("/")
+        console.log("Subida de archivo finalizada! La URL de Cloudinray es: ", response.data.secure_url)
+        this.setState({ ...this.state, avatar: response.data.secure_url })
       })
-      .catch((err) => this.setState({ errorMessage: err.response.data.message }))
+      .catch((err) => console.log(err))
   }
 
   render() {
+    console.log(this.props)
     return (
       <main className="signup-form">
         <Container as="section">
@@ -79,10 +68,6 @@ class SignupForm extends Component {
                 <Form.Group controlId="username">
                   <Form.Label>Username</Form.Label>
                   <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-                </Form.Group>
-                <Form.Group controlId="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Label>Platforms</Form.Label>
@@ -99,14 +84,9 @@ class SignupForm extends Component {
                   {this.state.errorMessage}
                 </p>
                 <button className="myButton" type="submit">
-                  Sign up
+                  Edit
                 </button>
               </Form>
-              <p>
-                <small>
-                  Have an account already? <Link to="/login">Log In</Link>
-                </small>
-              </p>
             </Col>
           </Row>
         </Container>
@@ -115,4 +95,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm
+export default EditProfileForm

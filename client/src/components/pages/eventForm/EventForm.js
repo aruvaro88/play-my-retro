@@ -3,7 +3,6 @@ import EventService from "../../../services/event.service"
 import FileService from "../../../services/file.service"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 
 class EventForm extends Component {
   constructor(props) {
@@ -90,19 +89,20 @@ class EventForm extends Component {
           </Form.Group>
           <Form.Group controlId="game">
             <Form.Label>Game</Form.Label>
-            <Form.Control className="input"  name="game" type="text" value={this.state.game} onChange={this.handleChange} />
+            <Form.Control className="input" name="game" type="text" value={this.state.game} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="photo">
             <Form.Label>Photo</Form.Label>
             <Form.Control name="photo" type="file" onChange={this.handleFileUpload} />
           </Form.Group>
-
-          <Button variant="dark" type="submit">
-            Create Event
-          </Button>
-          <Button onClick={() => this.props.closeModal()} variant="dark">
-            Close
-          </Button>
+          <div className="form-buttons">
+            <button className="myButton" type="submit">
+              Create Event
+            </button>
+            <button onClick={() => this.props.closeModal()} className="myMiniButton">
+              Close
+            </button>
+          </div>
         </Form>
       </Container>
     )
