@@ -170,7 +170,7 @@ class EventDetails extends Component {
               ))}
           </section>
           <Modal className="myModal" show={this.state.modalShow} onHide={() => this.handleModal(false)}>
-            <Modal.Body>{this.displayModal(this.state.modalName)}</Modal.Body>
+            {this.displayModal(this.state.modalName)}
           </Modal>
 
           <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>

@@ -1,0 +1,14 @@
+.friends-card{
+border: 1px solid #1292B9;
+padding: 24px;
+width: 250px;
+margin: 16px 12px;
+}
+.friends-content h4{
+     font-family: "VT323",
+     sans-serif;
+     color: #1292B9;
+}
+.card-img{
+    width: 200px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./OwnerInfo.css"
 
 class OwnerInfo extends Component {
   constructor(props) {
@@ -13,14 +14,19 @@ class OwnerInfo extends Component {
 
   render() {
     return (
-      <>
-        <figure>
+      <div className="owner-info-card">
+        <figure className="owner-avatar">
           <img src={this.state.avatar} alt="avatar" />
         </figure>
-        <p>Username: {this.state.username}</p>
-        <p>{this.state.friends}</p>
-        <p>Platforms: {this.state.platforms}</p>
-      </>
+        <article className="owner-content">
+          <h5>{this.state.username}</h5>
+          <p>{this.state.platforms}</p>
+        </article>
+        <article className="form-buttons">
+          <button className="myButton">Add to Friends</button>
+          <button className="myMiniButton">Close</button>
+        </article>
+      </div>
     )
   }
 }

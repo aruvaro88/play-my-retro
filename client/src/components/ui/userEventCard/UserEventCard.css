@@ -1,0 +1,26 @@
+.user-event-card {
+    border: 1px solid #1292B9;
+    padding: 24px;
+    width: 250px;
+    margin: 16px 12px;
+}
+
+.event-img {
+    height:100px;
+    width: 200px;
+    overflow: hidden;
+}
+.event-img img {
+object-fit: contain;
+object-position: top;
+}
+
+.event-content h4{
+     font-family: "VT323",
+     sans-serif;
+     color: #1292B9;
+}
+
+.event-buttons .myButton{
+    margin-top: 16px;
+}

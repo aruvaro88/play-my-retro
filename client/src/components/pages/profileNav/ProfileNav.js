@@ -5,20 +5,25 @@ const ProfileNav = (props) => {
   console.log(props.loggedInUser._id)
   return (
     <>
-      <figure>
-        <img src={props.loggedInUser.avatar} alt="avatar" />
-      </figure>
-      <h5>{props.loggedInUser.username}</h5>
-      <Link to="/profile/edit" className="myButton">
-        Edit profile
-      </Link>
-      <Link to="/profile/friends" className="myButton">
-        My friends
-      </Link>
-      <Link to={`/profile/events/getuserevents`} className="myButton">
-        My Events
-      </Link>
-      <button className="myButton">LogOut</button>
+      <article className="user-data">
+        <figure className="avatar-img">
+          <img src={props.loggedInUser.avatar} alt="avatar" />
+        </figure>
+        <h4>{props.loggedInUser.username}</h4>
+        <p>Email</p>
+        <p>{props.loggedInUser.platforms}</p>
+      </article>
+      <article className="profile-buttons">
+        <Link to="/profile/edit" className="nav-button">
+          Edit profile
+        </Link>
+        <Link to="/profile/friends" className="nav-button">
+          My friends
+        </Link>
+        <Link to={`/profile/events/getuserevents`} className="nav-button">
+          My Events
+        </Link>
+      </article>
     </>
   )
 }

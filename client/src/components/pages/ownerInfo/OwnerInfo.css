@@ -1,0 +1,43 @@
+.owner-info-card {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.owner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.owner-content h5 {
+    color: #1292B9;
+    font-size: 24px;
+    letter-spacing: 6px;
+    line-height: 24px;
+    font-family: "VT323",
+        sans-serif;
+    text-align: center;
+}
+
+.owner-content p {
+    color: #867F79;
+    font-family: 'Share Tech Mono',
+        monospace;
+    font-size: 18px;
+    letter-spacing: 3px;
+    line-height: 18px;
+    text-align: center;
+}
+
+
+.owner-avatar {
+    width: 200px;
+    margin: 0;
+}
+
+.owner-avatar img {
+    border: 1px solid #1292B9
+}

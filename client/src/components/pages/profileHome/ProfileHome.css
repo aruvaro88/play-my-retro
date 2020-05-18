@@ -1,0 +1,23 @@
+.profile-home{
+margin-left: 48px;
+margin-top: 50px;
+height: 50vh;
+}
+
+.profile-home h1 {
+    color: #1292B9;
+    font-size: 72px;
+    letter-spacing: 6px;
+    line-height: 72px;
+    font-family: "VT323",
+        sans-serif;
+}
+
+.profile-home p {
+    color: #867F79;
+    font-family: 'Share Tech Mono',
+    monospace;
+    font-size: 36px;
+    letter-spacing: 3px;
+    line-height: 41px;
+}

@@ -1,8 +1,14 @@
 import React from "react"
+import "./ProfileHome.css"
 
-const ProfileHome = () => {
+const ProfileHome = (props) => {
     
-    return <h1>soy el home del profile</h1>
+    return (
+      <main className="profile-home">
+        <h1>Welcome, {props.loggedInUser.username}</h1>
+        <p>This is your personal profile</p>
+      </main>
+    )
 }
 
 export default ProfileHome

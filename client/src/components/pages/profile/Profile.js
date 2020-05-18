@@ -22,11 +22,13 @@ class Profile extends Component {
           </section>
           <section className="profile-content">
             <Switch>
-              <Route path="/profile" exact render={() => <ProfileHome />} />
-              <Route path="/profile/edit" render={() => <EditProfileForm {...this.state} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser}/>} />
+              <Route path="/profile" exact render={() => <ProfileHome loggedInUser={this.props.loggedInUser} />} />
+              <Route
+                path="/profile/edit"
+                render={() => <EditProfileForm {...this.state} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} />}
+              />
               <Route path="/profile/events/getuserevents" exact render={() => <UserEvents loggedInUser={this.props.loggedInUser} />} />
               <Route path="/profile/friends" render={() => <UserFriends loggedInUser={this.props.loggedInUser} />} />
-
             </Switch>
           </section>
         </main>

@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
+import "./EditProfileForm.css"
 class EditProfileForm extends Component {
   constructor(props) {
     super(props)
@@ -58,10 +59,7 @@ class EditProfileForm extends Component {
   render() {
     console.log(this.props)
     return (
-      <main className="signup-form">
-        <Container as="section">
-          <Row>
-            <Col md={{ span: 4, offset: 4 }}>
+      <main className="edit-form">
               <h1>Sign Up</h1>
               <hr />
               <Form onSubmit={this.handleSubmit}>
@@ -77,7 +75,7 @@ class EditProfileForm extends Component {
                   <Form.Check id="4" name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
                 </Form.Group>
                 <Form.Group controlId="img">
-                  <Form.Label>Imagen (URL)</Form.Label>
+                  <Form.Label>Avatar (URL)</Form.Label>
                   <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
                 </Form.Group>
                 <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
@@ -87,9 +85,6 @@ class EditProfileForm extends Component {
                   Edit
                 </button>
               </Form>
-            </Col>
-          </Row>
-        </Container>
       </main>
     )
   }

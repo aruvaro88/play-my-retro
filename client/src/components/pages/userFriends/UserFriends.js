@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import UserService from "../../../services/user.service"
 import Row from "react-bootstrap/Row"
-
+import "./UserFriends.css"
 
 class UserFriends extends Component {
   constructor(props) {
@@ -22,23 +22,23 @@ class UserFriends extends Component {
     this.getUser()
   }
 
-    render() {
-      console.log(this.state)
-      return (
-        <Row className="event-cards">
-          {this.state.user.friends &&
-            this.state.user.friends.map((elm) => (
-              <article className="event-card">
-                <figure className="card-img">
-                  <img src={elm.avatar} alt="meh" />
-                </figure>
-                <article className="card-content">
-                  <h4>{elm.username}</h4>
-                </article>
+  render() {
+    console.log(this.state)
+    return (
+      <article className="friends-card">
+        {this.state.user.friends &&
+          this.state.user.friends.map((elm) => (
+            <article className="friends-avatar">
+              <figure className="card-img">
+                <img src={elm.avatar} alt="meh" />
+              </figure>
+              <article className="friends-content">
+                <h4>{elm.username}</h4>
               </article>
-            ))}
-        </Row>
-      )
+            </article>
+          ))}
+      </article>
+    )
   }
 }
 
