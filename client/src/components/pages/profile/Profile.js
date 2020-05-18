@@ -5,6 +5,7 @@ import "./Profile.css"
 import ProfileHome from "../../pages/profileHome/ProfileHome"
 import UserEvents from "../userEvents/UserEvents"
 import EditProfileForm from "../editProfileForm/EditProfileForm"
+import UserFriends from "../userFriends/UserFriends"
 
 class Profile extends Component {
   constructor(props) {
@@ -24,6 +25,8 @@ class Profile extends Component {
               <Route path="/profile" exact render={() => <ProfileHome />} />
               <Route path="/profile/edit" render={() => <EditProfileForm {...this.state} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser}/>} />
               <Route path="/profile/events/getuserevents" exact render={() => <UserEvents loggedInUser={this.props.loggedInUser} />} />
+              <Route path="/profile/friends" render={() => <UserFriends loggedInUser={this.props.loggedInUser} />} />
+
             </Switch>
           </section>
         </main>

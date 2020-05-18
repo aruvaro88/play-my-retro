@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import FileService from "../../../services/file.service"
-import UserService from "../../../services/user.services"
+import UserService from "../../../services/user.service"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"

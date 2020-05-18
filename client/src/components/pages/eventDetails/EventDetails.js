@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container"
 import Modal from "react-bootstrap/Modal"
 import Toast from "react-bootstrap/Modal"
 import { Link } from "react-router-dom"
+import OwnerInfo from "../ownerInfo/OwnerInfo"
 import "./EventDetails.css"
 
 class EventDetails extends Component {
@@ -35,9 +36,14 @@ class EventDetails extends Component {
       .getEvent(id)
       .then((response) => {
         this.getCommentsByEvent(id)
+        this.getOwnerInfo(response.data.owner)
         this.setState(response.data)
       })
       .catch((err) => console.log(err))
+  }
+
+  getOwnerInfo(ownerData) {
+    this.setState({owner: ownerData})
   }
 
   handleToast = (visible, text = "") => {
@@ -80,6 +86,13 @@ class EventDetails extends Component {
               closeModal={() => this.handleModal(false)}
             />
           )
+        case "ownerInfo":
+          return (
+            <OwnerInfo
+              {...this.state.owner}
+              closeModal={() => this.handleModal(false)}
+            />
+          )
         default:
           return null
       }
@@ -105,9 +118,7 @@ class EventDetails extends Component {
           <h1>{this.state.title}</h1>
           <h2>{this.state.date}</h2>
           <h2>{this.state.game}</h2>
-          <button className="myButton">
-            I'm in!
-          </button>
+          <button className="myButton">I'm in!</button>
           <figure className="details-img">
             <img src={this.state.photo} alt={this.state.title} />
           </figure>
@@ -144,6 +155,9 @@ class EventDetails extends Component {
                   Create Comment
                 </button>
               ) : null}
+              <button onClick={() => this.handleModal(true, "ownerInfo")} className="myButton">
+                Owner Info
+              </button>
               <Link to="/events" className="myButton">
                 Volver
               </Link>
