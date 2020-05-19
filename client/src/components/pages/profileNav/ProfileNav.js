@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const ProfileNav = (props) => {
-  console.log(props.loggedInUser._id)
   return (
     <>
       <article className="user-data">
@@ -10,7 +9,7 @@ const ProfileNav = (props) => {
           <img src={props.loggedInUser.avatar} alt="avatar" />
         </figure>
         <h4>{props.loggedInUser.username}</h4>
-        <p>Email</p>
+        <small>{props.loggedInUser.email}</small>
         <p>{props.loggedInUser.platforms}</p>
       </article>
       <article className="profile-buttons">

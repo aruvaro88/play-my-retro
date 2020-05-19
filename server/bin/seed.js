@@ -46,6 +46,7 @@ for (let i = 1; i <= 10; i++) {
     username: faker.name.firstName(),
     password: bcrypt.hashSync("admin", salt),
     avatar: faker.internet.avatar(),
+    email: faker.internet.email(),
     platforms: faker.random.arrayElement(["SNES", "Sega Megadrive", "Sega Saturn", "Arcade"]),
   })
 }

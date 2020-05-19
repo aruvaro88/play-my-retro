@@ -25,14 +25,14 @@ class EventDetails extends Component {
       lat: "",
       lng: "",
     }
-    this.service = new EventService()
+    this.eventService = new EventService()
     this.commentService = new CommentService()
   }
   handleModal = (visible, modalName) => this.setState({ modalShow: visible, modalName: modalName })
 
   getEventInfo() {
     const id = this.props.match.params.id
-    this.service
+    this.eventService
       .getEvent(id)
       .then((response) => {
         this.getCommentsByEvent(id)

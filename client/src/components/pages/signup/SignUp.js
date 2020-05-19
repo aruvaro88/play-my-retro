@@ -15,6 +15,7 @@ class SignupForm extends Component {
         username: "",
         password: "",
         avatar: "",
+        email: "",
         platforms: [],
       },
       errorMessage: "",
@@ -83,6 +84,10 @@ class SignupForm extends Component {
                 <Form.Group controlId="password">
                   <Form.Label>Password</Form.Label>
                   <Form.Control className="input" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="email">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control className="input" name="email" type="email" value={this.state.email} onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Label>Platforms</Form.Label>

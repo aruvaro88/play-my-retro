@@ -7,34 +7,27 @@ import UserEvents from "../userEvents/UserEvents"
 import EditProfileForm from "../editProfileForm/EditProfileForm"
 import UserFriends from "../userFriends/UserFriends"
 
-class Profile extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return (
-      <>
-        <main className="display-profile">
-          <section className="profileNav">
-            <ProfileNav {...this.props} loggedInUser={this.props.loggedInUser} />
-          </section>
-          <section className="profile-content">
-            <Switch>
-              <Route path="/profile" exact render={() => <ProfileHome loggedInUser={this.props.loggedInUser} />} />
-              <Route
-                path="/profile/edit"
-                render={() => <EditProfileForm {...this.state} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} />}
-              />
-              <Route path="/profile/events/getuserevents" exact render={() => <UserEvents loggedInUser={this.props.loggedInUser} />} />
-              <Route path="/profile/friends" render={() => <UserFriends loggedInUser={this.props.loggedInUser} />} />
-            </Switch>
-          </section>
-        </main>
-      </>
-    )
-  }
+const Profile = (props) => {
+  return (
+    <>
+      <main className="display-profile">
+        <section className="profileNav">
+          <ProfileNav {...props} loggedInUser={props.loggedInUser} />
+        </section>
+        <section className="profile-content">
+          <Switch>
+            <Route path="/profile" exact render={() => <ProfileHome loggedInUser={props.loggedInUser} />} />
+            <Route
+              path="/profile/edit"
+              render={() => <EditProfileForm {...props} setTheUser={props.setTheUser} loggedInUser={props.loggedInUser} />}
+            />
+            <Route path="/profile/events/getuserevents" exact render={() => <UserEvents loggedInUser={props.loggedInUser} />} />
+            <Route path="/profile/friends" render={() => <UserFriends loggedInUser={props.loggedInUser} />} />
+          </Switch>
+        </section>
+      </main>
+    </>
+  )
 }
 
 export default Profile

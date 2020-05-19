@@ -6,6 +6,7 @@ const userSchema = new Schema(
     username: String,
     password: String,
     avatar: String,
+    email: String,
     platforms: [{ type: String, enum: ["SNES", "Sega Megadrive", "Sega Saturn", "Arcade"] }],
     friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },

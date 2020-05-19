@@ -1,10 +1,7 @@
 import React, { Component } from "react"
 import FileService from "../../../services/file.service"
 import UserService from "../../../services/user.service"
-import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 
 import "./EditProfileForm.css"
 class EditProfileForm extends Component {
@@ -13,6 +10,7 @@ class EditProfileForm extends Component {
     this.state = {
       avatar: this.props.loggedInUser.avatar,
       username: this.props.loggedInUser.username,
+      email: this.props.loggedInUser.email,
       platforms: this.props.loggedInUser.platforms,
     }
     this.fileService = new FileService()
@@ -60,31 +58,35 @@ class EditProfileForm extends Component {
     console.log(this.props)
     return (
       <main className="edit-form">
-              <h1>Sign Up</h1>
-              <hr />
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Group controlId="username">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-                </Form.Group>
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Label>Platforms</Form.Label>
-                  <Form.Check id="1" name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
-                  <Form.Check id="2" name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
-                  <Form.Check id="3" name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
-                  <Form.Check id="4" name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
-                </Form.Group>
-                <Form.Group controlId="img">
-                  <Form.Label>Avatar (URL)</Form.Label>
-                  <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
-                </Form.Group>
-                <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
-                  {this.state.errorMessage}
-                </p>
-                <button className="myButton" type="submit">
-                  Edit
-                </button>
-              </Form>
+        <h1>Sign Up</h1>
+        <hr />
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="username">
+            <Form.Label>Username</Form.Label>
+            <Form.Control className="input" name="username" type="text" value={this.state.username} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Username</Form.Label>
+            <Form.Control className="input" name="email" type="text" value={this.state.email} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Label>Platforms</Form.Label>
+            <Form.Check id="1" name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
+            <Form.Check id="2" name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
+            <Form.Check id="3" name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
+            <Form.Check id="4" name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+          </Form.Group>
+          <Form.Group controlId="img">
+            <Form.Label>Avatar (URL)</Form.Label>
+            <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
+          </Form.Group>
+          <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
+            {this.state.errorMessage}
+          </p>
+          <button className="myButton" type="submit">
+            Edit
+          </button>
+        </Form>
       </main>
     )
   }

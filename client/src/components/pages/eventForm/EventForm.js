@@ -15,7 +15,7 @@ class EventForm extends Component {
       platforms: [],
       game: "",
       photo: "",
-      owner: this.props.loggedInUser._id
+      owner: this.props.loggedInUser._id,
     }
     this.eventService = new EventService()
     this.fileService = new FileService()
@@ -59,6 +59,7 @@ class EventForm extends Component {
   }
 
   render() {
+    console.log(this.props.loggedInUser)
     return (
       <Container as="section">
         <h1>New Event</h1>
@@ -80,13 +81,11 @@ class EventForm extends Component {
             <Form.Label>Date</Form.Label>
             <Form.Control className="input" name="date" type="date" value={this.state.date} onChange={this.handleChange} />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Label>Platforms</Form.Label>
-            <Form.Check name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
-            <Form.Check name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
-            <Form.Check name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
-            <Form.Check name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
-          </Form.Group>
+          <Form.Control as="select">
+            {this.props.loggedInUser.platforms.map((elm) => (
+              <option>{elm}</option>
+            ))}
+          </Form.Control>
           <Form.Group controlId="game">
             <Form.Label>Game</Form.Label>
             <Form.Control className="input" name="game" type="text" value={this.state.game} onChange={this.handleChange} />

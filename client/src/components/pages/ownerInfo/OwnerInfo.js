@@ -22,10 +22,14 @@ class OwnerInfo extends Component {
           <h5>{this.state.username}</h5>
           <p>{this.state.platforms}</p>
         </article>
-        <article className="form-buttons">
-          <button className="myButton">Add to Friends</button>
-          <button className="myMiniButton">Close</button>
-        </article>
+        <div className="form-buttons">
+          <button className="myButton" >
+            Add as friend
+          </button>
+          <button onClick={() => this.props.closeModal()} className="myMiniButton">
+            Close
+          </button>
+        </div>
       </div>
     )
   }

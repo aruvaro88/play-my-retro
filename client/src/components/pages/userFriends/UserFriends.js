@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import UserService from "../../../services/user.service"
-import Row from "react-bootstrap/Row"
 import "./UserFriends.css"
 
 class UserFriends extends Component {
@@ -23,7 +22,6 @@ class UserFriends extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <article className="friends-card">
         {this.state.user.friends &&
