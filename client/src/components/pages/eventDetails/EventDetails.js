@@ -44,9 +44,9 @@ class EventDetails extends Component {
   }
   checkUserAssistance() {
     if (this.state.assistants.some((elm) => elm === this.props.loggedInUser._id)) {
-      this.setState({userOnEvent: true})
+      this.setState({ userOnEvent: true })
     } else {
-     this.setState({ userOnEvent: false })
+      this.setState({ userOnEvent: false })
     }
   }
 
@@ -56,6 +56,18 @@ class EventDetails extends Component {
       //.then(response => console.log(response.data.assistants))
       .then(() => this.setState({ assistants: [...this.state.assistants, this.props.loggedInUser._id] }, () => this.checkUserAssistance()))
       .catch((err) => console.log(err))
+  }
+
+  removeUserFromEvent = () => {
+    const assistantsCopy = [...this.state.assistants]
+    const idx = assistantsCopy.indexOf(this.props.loggedInUser._id)
+    assistantsCopy.splice(idx, 1)
+    this.setState({ assistants: assistantsCopy }, () => {
+      this.eventService
+        .editEvent(this.props.match.params.id, this.state)
+        .then(()=> this.checkUserAssistance())
+        .catch((err) => console.log(err))
+    })
   }
 
   getOwnerInfo(ownerData) {
@@ -131,15 +143,15 @@ class EventDetails extends Component {
           <h2>{this.state.game}</h2>
           {this.state.userOnEvent ? (
             <>
-            <small>Im on the event</small>
-            <button onClick={() => this.pushUserToEvent()} className="myButtonBlue">
-                I'm on the Event!
-            </button>
-              </>
+              <button onClick={() => this.removeUserFromEvent()} className="myButtonBlue">
+                Leave Event
+              </button>
+            </>
           ) : (
-              <button onClick={() => this.pushUserToEvent()} className="myButton">
-                I'm in!
-              </button>)}
+            <button onClick={() => this.pushUserToEvent()} className="myButton">
+              I'm in!
+            </button>
+          )}
           <figure className="details-img">
             <img src={this.state.photo} alt={this.state.title} />
           </figure>
