@@ -32,6 +32,7 @@ router.post("/removeEvent/:id", (req, res, next) => {
     .then((data) => res.json(data))
     .catch((err) => (err ? res.status(500).json({ message: "Error removing that event" }) : null))
 })
+
 router.post("/editEvent/:id", (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, req.body)
     .populate("owner")
@@ -46,6 +47,15 @@ router.get("/getuserevents/:id", (req, res, next) => {
       res.json(data)
     })
     .catch((err) => (err ? res.status(500).json({ message: "Error fetching user events" }) : null))
+})
+
+router.post("/assisttoevents/:id/:userid", (req, res, next) => {
+  Event.findByIdAndUpdate(req.params.id, { $push: { assistants: req.params.userid } })
+   .then((data) => {
+      console.log(data)
+      res.json(data)
+    })
+    .catch((err) => (err ? res.status(500).json({ message: "Error with assistance" }) : null))
 })
 
 module.exports = router
