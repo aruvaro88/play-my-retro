@@ -56,6 +56,7 @@ button {
   line-height: 18px;
   padding: 10px 30px;
   display: block;
+  margin: 0 auto;
 }
 
 .myButtonBlue {

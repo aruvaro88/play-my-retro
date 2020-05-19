@@ -58,7 +58,7 @@ class EditProfileForm extends Component {
     console.log(this.props)
     return (
       <main className="edit-form">
-        <h1>Sign Up</h1>
+        <h1>Edit Profile</h1>
         <hr />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="username">

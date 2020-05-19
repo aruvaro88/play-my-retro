@@ -26,9 +26,6 @@ class OwnerInfo extends Component {
           <button className="myButton" >
             Add as friend
           </button>
-          <button onClick={() => this.props.closeModal()} className="myMiniButton">
-            Close
-          </button>
         </div>
       </div>
     )

@@ -98,9 +98,6 @@ class EventForm extends Component {
             <button className="myButton" type="submit">
               Create Event
             </button>
-            <button onClick={() => this.props.closeModal()} className="myMiniButton">
-              Close
-            </button>
           </div>
         </Form>
       </Container>

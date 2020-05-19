@@ -21,6 +21,7 @@ class EventDetails extends Component {
         show: false,
         text: "",
       },
+      userOnEvent: "",
       comments: [],
       lat: "",
       lng: "",
@@ -37,13 +38,28 @@ class EventDetails extends Component {
       .then((response) => {
         this.getCommentsByEvent(id)
         this.getOwnerInfo(response.data.owner)
-        this.setState(response.data)
+        this.setState(response.data, () => this.checkUserAssistance())
       })
+      .catch((err) => console.log(err))
+  }
+  checkUserAssistance() {
+    if (this.state.assistants.some((elm) => elm === this.props.loggedInUser._id)) {
+      this.setState({userOnEvent: true})
+    } else {
+     this.setState({ userOnEvent: false })
+    }
+  }
+
+  pushUserToEvent() {
+    this.eventService
+      .pushUserToEvent(this.props.match.params.id, this.props.loggedInUser._id)
+      //.then(response => console.log(response.data.assistants))
+      .then(() => this.setState({ assistants: [...this.state.assistants, this.props.loggedInUser._id] }, () => this.checkUserAssistance()))
       .catch((err) => console.log(err))
   }
 
   getOwnerInfo(ownerData) {
-    this.setState({owner: ownerData})
+    this.setState({ owner: ownerData })
   }
 
   handleToast = (visible, text = "") => {
@@ -87,12 +103,7 @@ class EventDetails extends Component {
             />
           )
         case "ownerInfo":
-          return (
-            <OwnerInfo
-              {...this.state.owner}
-              closeModal={() => this.handleModal(false)}
-            />
-          )
+          return <OwnerInfo {...this.state.owner} closeModal={() => this.handleModal(false)} />
         default:
           return null
       }
@@ -118,7 +129,17 @@ class EventDetails extends Component {
           <h1>{this.state.title}</h1>
           <h2>{this.state.date}</h2>
           <h2>{this.state.game}</h2>
-          <button className="myButton">I'm in!</button>
+          {this.state.userOnEvent ? (
+            <>
+            <small>Im on the event</small>
+            <button onClick={() => this.pushUserToEvent()} className="myButtonBlue">
+                I'm on the Event!
+            </button>
+              </>
+          ) : (
+              <button onClick={() => this.pushUserToEvent()} className="myButton">
+                I'm in!
+              </button>)}
           <figure className="details-img">
             <img src={this.state.photo} alt={this.state.title} />
           </figure>
@@ -137,7 +158,7 @@ class EventDetails extends Component {
               </div>
               <div className="elements">
                 <h5>Assistants</h5>
-                <p>{this.state.assistants}</p>
+                {this.state.assistants && <p>{this.state.assistants.length}</p>}
               </div>
               <div className="elements">
                 <h5>Owner</h5>
@@ -171,6 +192,9 @@ class EventDetails extends Component {
           </section>
           <Modal className="myModal" show={this.state.modalShow} onHide={() => this.handleModal(false)}>
             {this.displayModal(this.state.modalName)}
+            <button onClick={() => this.handleModal(false)} className="myMiniButton">
+              Close
+            </button>
           </Modal>
 
           <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>

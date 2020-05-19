@@ -4,7 +4,7 @@ export default class services {
   constructor() {
     this.service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/events`,
-      withCredentials: true
+      withCredentials: true,
     })
   }
 
@@ -13,6 +13,8 @@ export default class services {
   createEvent = (theEvent) => this.service.post("/createEvent", theEvent)
   removeEvent = (id) => this.service.post(`/removeEvent/${id}`)
   editEvent = (id, theEvent) => this.service.post(`/editEvent/${id}`, theEvent)
+
+  pushUserToEvent = (id, userId) => this.service.post(`/assisttoevents/${id}/${userId}`)
 
   getUserEvents = (userId) => this.service.get(`/getuserevents/${userId}`)
 }

@@ -77,6 +77,9 @@ class EventList extends Component {
           <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
             <Modal.Body>
               <EventForm loggedInUser={this.props.loggedInUser} finishEventPost={this.finishEventPost} closeModal={() => this.handleModal(false)} />
+              <button onClick={() => this.handleModal(false)} className="myMiniButton">
+                Close
+              </button>
             </Modal.Body>
           </Modal>
 
