@@ -9,12 +9,24 @@ class UserFriends extends Component {
       user: {},
     }
 
-    this.service = new UserService()
+    this.userService = new UserService()
   }
   getUser() {
-    this.service
+    this.userService
       .getUser(this.props.loggedInUser._id)
       .then((response) => this.setState({ user: response.data }))
+      .catch((err) => console.log(err))
+  }
+
+  removeOwnerFromFriends = (ownerId) => {
+    const idx = this.props.loggedInUser.friends.indexOf(ownerId)
+    this.props.loggedInUser.friends.splice(idx, 1)
+    this.userService
+      .editUser(this.props.loggedInUser._id, this.props.loggedInUser)
+      .then((response) =>
+        this.setState({ ...this.state, user: { ...this.state.user, friends: response.data.friends } }, () => this.props.setTheUser(this.state.user))
+      )
+      .then(() => this.getUser())
       .catch((err) => console.log(err))
   }
   componentDidMount() {
@@ -25,7 +37,7 @@ class UserFriends extends Component {
     return (
       <main className="display-friends">
         {this.state.user.friends &&
-          this.state.user.friends.map((elm) => (
+          this.state.user.friends.map((elm, idx) => (
             <article className="friends-card">
               <article className="friends-avatar">
                 <figure className="card-img">
@@ -34,6 +46,9 @@ class UserFriends extends Component {
                 <article className="friends-content">
                   <h4>{elm.username}</h4>
                 </article>
+                <button onClick={() => this.removeOwnerFromFriends(elm._id)} className="my-button-blue">
+                  Unfollow
+                </button>
               </article>
             </article>
           ))}

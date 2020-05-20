@@ -78,7 +78,6 @@ class EventDetails extends Component {
       .then((response) => this.props.setTheUser(response.data))
       .then(() => this.checkUserFriends())
       .catch((err) => console.log(err))
-    
   }
 
   pushUserToEvent() {
@@ -174,12 +173,12 @@ class EventDetails extends Component {
           <h2>{this.state.game}</h2>
           {this.state.userOnEvent ? (
             <>
-              <button onClick={() => this.removeUserFromEvent()} className="myButtonBlue">
+              <button onClick={() => this.removeUserFromEvent()} className="my-button-blue">
                 Leave Event
               </button>
             </>
           ) : (
-            <button onClick={() => this.pushUserToEvent()} className="myButton">
+            <button onClick={() => this.pushUserToEvent()} className="my-button">
               I'm in!
             </button>
           )}
@@ -210,19 +209,19 @@ class EventDetails extends Component {
             </article>
             <div className="details-buttons">
               {this.props.loggedInUser && this.state.owner && this.props.loggedInUser._id === this.state.owner._id && (
-                <button onClick={() => this.handleModal(true, "editEvent")} className="myButton">
+                <button onClick={() => this.handleModal(true, "editEvent")} className="my-button">
                   Edit Event
                 </button>
               )}
               {this.props.loggedInUser ? (
-                <button onClick={() => this.handleModal(true, "createComment")} className="myButton">
+                <button onClick={() => this.handleModal(true, "createComment")} className="my-button">
                   Create Comment
                 </button>
               ) : null}
-              <button onClick={() => this.handleModal(true, "ownerInfo")} className="myButton">
+              <button onClick={() => this.handleModal(true, "ownerInfo")} className="my-button">
                 Owner Info
               </button>
-              <Link to="/events" className="myButton">
+              <Link to="/events" className="my-button">
                 Volver
               </Link>
             </div>
@@ -233,9 +232,9 @@ class EventDetails extends Component {
                 <CommentCard key={elm._id} {...elm} loggedInUser={this.props.loggedInUser} removeComment={() => this.removeComment(elm._id)} />
               ))}
           </section>
-          <Modal className="myModal" show={this.state.modalShow} onHide={() => this.handleModal(false)}>
+          <Modal className="my-modal" show={this.state.modalShow} onHide={() => this.handleModal(false)}>
             {this.displayModal(this.state.modalName)}
-            <button onClick={() => this.handleModal(false)} className="myMiniButton">
+            <button onClick={() => this.handleModal(false)} className="my-mini-button">
               Close
             </button>
           </Modal>

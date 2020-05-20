@@ -63,7 +63,7 @@ class EventList extends Component {
         <Container as="section">
           <h1>Check community Events!</h1>
           {this.props.loggedInUser && (
-            <button onClick={() => this.handleModal(true)} className="myButtonBlue">
+            <button onClick={() => this.handleModal(true)} className="my-button-blue">
               Create new event
             </button>
           )}
@@ -77,7 +77,7 @@ class EventList extends Component {
           <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
             <Modal.Body>
               <EventForm loggedInUser={this.props.loggedInUser} finishEventPost={this.finishEventPost} closeModal={() => this.handleModal(false)} />
-              <button onClick={() => this.handleModal(false)} className="myMiniButton">
+              <button onClick={() => this.handleModal(false)} className="my-mini-button">
                 Close
               </button>
             </Modal.Body>

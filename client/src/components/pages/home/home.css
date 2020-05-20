@@ -25,7 +25,7 @@
     padding: 200px 0 0;
 }
 
-.homepage .gameController {
+.homepage .game-controller {
     width: 427px;
     margin: 0 auto;
 }
@@ -37,7 +37,7 @@
     align-items: center;
 }
 
-.displayCard {
+.display-card {
     width: 1169px;
     display: flex;
     justify-content: space-between;
@@ -45,7 +45,7 @@
     margin-top: 48px;
 }
 
-.homepage .homeCard {
+.homepage .home-card {
     width: 269px;
     background-color: #F5F6F9;
     display: flex;
@@ -55,20 +55,20 @@
     min-height: 310px;
 }
 
-.homeCard .icon {
+.home-card .icon {
     height: 63px;
     width: 57px;
     margin-top: 53px;
     margin-bottom: 34px;
 }
 
-.homeCard .calendar {
+.home-card .calendar {
     width: 45px;
     margin: 0 auto;
     object-position: center;
 }
 
-.homeCard h4 {
+.home-card h4 {
     color: #1292B9;
     font-family: "VT323",
         sans-serif;
@@ -79,7 +79,7 @@
     text-align: center;
 }
 
-.homeCard p {
+.home-card p {
     color: #867F79;
     font-family: 'Share Tech Mono',
         monospace;
@@ -88,20 +88,20 @@
     line-height: 21px;
     text-align: center;
 }
-.everyGame{
+.every-game{
     margin-top: 214px;
 }
-.everyGame .composition {
+.every-game .composition {
 
     height: 361px;
     width: 568px;
 }
 
-.everyGame .gameText {
+.every-game .gameText {
     margin-left: 29px;
 }
 
-.everyGame .gameText h3 {
+.every-game .gameText h3 {
     color: #1292B9;
     font-family: "VT323",
         sans-serif;
@@ -110,7 +110,7 @@
     line-height: 50px;
 }
 
-.everyGame .gameText p {
+.every-game .gameText p {
     font-family: 'Share Tech Mono',
         monospace;
     color: #666665;

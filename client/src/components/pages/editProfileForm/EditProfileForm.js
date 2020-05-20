@@ -118,7 +118,7 @@ class EditProfileForm extends Component {
           <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
             {this.state.errorMessage}
           </p>
-          <button className="myButton" type="submit">
+          <button className="my-button" type="submit">
             Edit
           </button>
         </Form>

@@ -95,7 +95,7 @@ class EditEventForm extends Component {
             <Form.Control className="input" name="photo" type="file" onChange={this.handleFileUpload} />
           </Form.Group>
           <div className="form-buttons">
-            <button className="myButton" type="submit">
+            <button className="my-button" type="submit">
               Edit Event
             </button>
           </div>

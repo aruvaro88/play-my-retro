@@ -46,7 +46,7 @@ class CommentForm extends Component {
             <Form.Control className="input" name="description" type="textarea" value={this.state.description} onChange={this.handleChange} />
           </Form.Group>
           <div className="form-buttons">
-            <button className="myButton" type="submit">
+            <button className="my-button" type="submit">
               Create Comment
             </button>
           </div>

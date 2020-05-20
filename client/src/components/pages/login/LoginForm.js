@@ -58,7 +58,7 @@ class LoginForm extends Component {
                 <p className="error-message" style={{ display: this.state.errorMessage ? "block" : "none" }}>
                   {this.state.errorMessage}
                 </p>
-                <Button className="myButton" type="submit">
+                <Button className="my-button" type="submit">
                   Log In
                 </Button>
               </Form>

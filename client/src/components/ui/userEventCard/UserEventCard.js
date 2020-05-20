@@ -11,11 +11,11 @@ const EventCard = (props) => {
       <article className="event-content">
         <h4>{props.title}</h4>
         <div className="event-buttons">
-          <Link to={`/events/${props._id}`} className="myButton">
+          <Link to={`/events/${props._id}`} className="my-button">
             Event details
           </Link>
           {props.loggedInUser._id === props.owner && (
-            <button onClick={() => props.removeEvent(props._id)} className="myButton">
+            <button onClick={() => props.removeEvent(props._id)} className="my-button">
               Remove Event
             </button>
           )}

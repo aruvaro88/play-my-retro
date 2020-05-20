@@ -3,7 +3,7 @@
 
 }
 
-.profileNav {
+.profile-nav {
     width: 20%;
     height: 95vh;
     position: fixed;
@@ -19,7 +19,7 @@
     border: 1px solid #1292B9;
 }
 
-.profileNav h4 {
+.profile-nav h4 {
     font-size: 32px;
     letter-spacing: 2px;
     line-height: 24px;
@@ -29,7 +29,7 @@
     margin-bottom: 8px;
 }
 
-.profileNav p {
+.profile-nav p {
     color: #867F79;
     font-size: 18px;
     letter-spacing: 1.33px;

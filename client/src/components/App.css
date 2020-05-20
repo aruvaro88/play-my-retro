@@ -33,7 +33,7 @@ button {
   margin: 0;
 }
 
-.myButton {
+.my-button {
   width: 197px;
   background-color: #CB295F;
   color: #FFFFFF;
@@ -47,7 +47,7 @@ button {
   display: block;
 }
 
-.myMiniButton {
+.my-mini-button {
   color: #1292B9;
   font-family: "VT323",
     sans-serif;
@@ -59,7 +59,7 @@ button {
   margin: 0 auto;
 }
 
-.myButtonBlue {
+.my-button-blue {
   background-color: #1292B9;
   width: 197px;
   color: #FFFFFF;
@@ -102,7 +102,7 @@ img {
   backdrop-filter: blur(10px)
 }
 
-.myModal .modal-content {
+.my-modal .modal-content {
   padding: 24px;
 }
 

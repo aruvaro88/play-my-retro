@@ -20,41 +20,41 @@ class Home extends Component {
             <Col as="article" md={6}>
               <h1>Play My Retro</h1>
               <h3>Where games and people meet</h3>
-              <Link to="/" className="myButton">
+              <Link to="/signup" className="my-button">
                 Get Started
               </Link>
             </Col>
             <Col as="article" md={6}>
-              <figure className="gameController">
-                <img src="/img/game-controller.svg" alt="gameController" />
+              <figure className="game-controller">
+                <img src="/img/game-controller.svg" alt="game Controller" />
               </figure>
             </Col>
           </Row>
           <Row as="section" className="works">
             <h1>How it works!</h1>
-            <article className="displayCard">
-              <article className="homeCard">
+            <article className="display-card">
+              <article className="home-card">
                 <figure className="icon">
                   <img src="/img/edit-tools.svg" alt="signupicon"/>
                 </figure>
                 <h4>Sign Up</h4>
                 <p>Get into our awesome comunity</p>
               </article>
-              <article className="homeCard">
+              <article className="home-card">
                 <figure className="icon">
                   <img className="calendar" src="/img/calendar-day-solid.svg" alt="createicon"/>
                 </figure>
                 <h4>Create Events</h4>
                 <p>Create events to play videogames</p>
               </article>
-              <article className="homeCard">
+              <article className="home-card">
                 <figure className="icon">
                   <img src="/img/gamepad-solid.svg" alt="playicon"/>
                 </figure>
                 <h4>Play</h4>
                 <p>Assist to other events and play with people</p>
               </article>
-              <article className="homeCard">
+              <article className="home-card">
                 <figure className="icon">
                   <img src="/img/comments-solid.svg" alt="commenticon"/>
                 </figure>
@@ -63,7 +63,7 @@ class Home extends Component {
               </article>
             </article>
           </Row>
-          <Row as="section" className="everyGame">
+          <Row as="section" className="every-game">
             <Col as="article" md={6}>
               <article>
                 <figure className="composition">
@@ -78,7 +78,7 @@ class Home extends Component {
                   Choose a game you want and invite people to play it with you! It's simple to do, and it's a great opportunity to meet people who
                   likes games you like!
                 </p>
-                <Link to="/events" className="myButton">
+                <Link to="/events" className="my-button">
                   Create Events!
                 </Link>
               </article>

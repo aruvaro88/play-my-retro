@@ -11,7 +11,7 @@ const Profile = (props) => {
   return (
     <>
       <main className="display-profile">
-        <section className="profileNav">
+        <section className="profile-nav">
           <ProfileNav {...props} loggedInUser={props.loggedInUser} />
         </section>
         <section className="profile-content">
@@ -22,7 +22,7 @@ const Profile = (props) => {
               render={() => <EditProfileForm {...props} setTheUser={props.setTheUser} loggedInUser={props.loggedInUser} />}
             />
             <Route path="/profile/events/getuserevents" exact render={() => <UserEvents loggedInUser={props.loggedInUser} />} />
-            <Route path="/profile/friends" render={() => <UserFriends loggedInUser={props.loggedInUser} />} />
+            <Route path="/profile/friends" render={() => <UserFriends setTheUser={props.setTheUser} loggedInUser={props.loggedInUser} />} />
           </Switch>
         </section>
       </main>
