@@ -14,7 +14,6 @@ class OwnerInfo extends Component {
   }
 
   render() {
-console.log(this.props)
     return (
       <div className="owner-info-card">
         <figure className="owner-avatar">
@@ -28,12 +27,12 @@ console.log(this.props)
           {this.props.weAreFriends ? (
             <>
               <button onClick={() => this.props.removeOwnerFromFriends(this.state.id)} className="myButtonBlue">
-                Leave friend
+                Unfollow
               </button>
             </>
           ) : (
             <button onClick={() => this.props.addOwnerAsFriend(this.state.id)} className="myButton">
-              Add as friend
+              Follow
             </button>
           )}
         </div>

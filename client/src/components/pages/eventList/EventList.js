@@ -42,7 +42,7 @@ class EventList extends Component {
   finishEventPost = () => {
     this.getAllEvents()
     this.handleModal(false)
-    this.handleToast(true, "Evento creado correctamente")
+    this.handleToast(true, "New event created")
   }
 
   removeEvent = (eventId) => {

@@ -60,7 +60,6 @@ class EditEventForm extends Component {
   }
 
   render() {
-
     return (
       <Container as="section">
         <h1>New Event</h1>

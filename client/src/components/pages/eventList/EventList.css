@@ -1,25 +1,26 @@
-.event-list{
-     background-image: url("/img/bkg-bn.svg");
-     background-position: top;
-     padding: 40px 0px 150px;
-     background-repeat: no-repeat;
+.event-list {
+    background-image: url("/img/bkg-bn.svg");
+    background-position: top;
+    padding: 40px 0px 150px;
+    background-repeat: no-repeat;
 }
 
-.event-list h1{
+.event-list h1 {
     color: #1292B9;
-     font-family: "VT323",
-     sans-serif;
+    font-family: "VT323",
+        sans-serif;
     font-size: 60px;
     letter-spacing: 5px;
     line-height: 60px;
     margin-top: 104px;
     margin-bottom: 111px;
 }
+
 .event-list p {
-   color: #867F79;
-   font-size: 18px;
-   letter-spacing: 1.5px;
-   line-height: 20px;
+    color: #867F79;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    line-height: 20px;
 }
 
 .event-list h4 {
@@ -29,37 +30,40 @@
     font-size: 36px;
     letter-spacing: 5px;
 }
-.event-card{
+
+.event-card {
     min-height: 485px;
     width: 269px;
     background-color: #F5F6F9;
-  margin: 16px 8px;
+    margin: 16px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
-.event-card .card-img{
-     height: 209px;
-     width: 261px;
-     overflow: hidden;
+.event-card .card-img {
+    height: 209px;
+    width: 261px;
+    overflow: hidden;
 }
-.event-card .card-img img{
+
+.event-card .card-img img {
     object-fit: contain;
     object-position: center;
 }
+
 .event-card .myButton {
     margin: 8px 0;
 }
 
-.event-cards img{
+.event-cards img {
     height: 209px;
     width: 261px;
     object-fit: cover;
 }
 
-.event-card .card-buttons{
+.event-card .card-buttons {
     display: flex;
     flex-direction: column;
 }

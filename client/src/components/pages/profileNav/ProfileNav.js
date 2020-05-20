@@ -17,7 +17,7 @@ const ProfileNav = (props) => {
           Edit profile
         </Link>
         <Link to="/profile/friends" className="nav-button">
-          My friends
+          My follows
         </Link>
         <Link to={`/profile/events/getuserevents`} className="nav-button">
           My Events

@@ -7,7 +7,6 @@ import CommentForm from "../commentForm/CommentForm"
 import CommentCard from "../../ui/commentCard/CommentCard"
 import Container from "react-bootstrap/Container"
 import Modal from "react-bootstrap/Modal"
-import Toast from "react-bootstrap/Modal"
 import { Link } from "react-router-dom"
 import OwnerInfo from "../ownerInfo/OwnerInfo"
 import "./EventDetails.css"
@@ -18,10 +17,6 @@ class EventDetails extends Component {
     this.state = {
       modalShow: false,
       modalName: "",
-      toast: {
-        show: false,
-        text: "",
-      },
       weAreFriends: "",
       userOnEvent: "",
       comments: [],
@@ -109,16 +104,10 @@ class EventDetails extends Component {
     this.setState({ owner: ownerData })
   }
 
-  handleToast = (visible, text = "") => {
-    const toastCopy = { ...this.state.toast }
-    toastCopy.show = visible
-    toastCopy.text = text
-    this.setState({ toast: toastCopy })
-  }
+
   finishEventPost = () => {
     this.getEventInfo()
     this.handleModal(false)
-    this.handleToast(true, "Done!")
   }
 
   getCommentsByEvent = (eventId) => {
@@ -250,13 +239,6 @@ class EventDetails extends Component {
               Close
             </button>
           </Modal>
-
-          <Toast onClose={() => this.handleToast(false)} show={this.state.toast.show} delay={3000} autohide>
-            <Toast.Header>
-              <strong className="mr-auto">Message</strong>
-            </Toast.Header>
-            <Toast.Body>{this.state.toast.text}</Toast.Body>
-          </Toast>
         </Container>
       </main>
     )

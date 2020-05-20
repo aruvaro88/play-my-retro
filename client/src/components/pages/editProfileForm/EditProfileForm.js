@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import FileService from "../../../services/file.service"
 import UserService from "../../../services/user.service"
 import Form from "react-bootstrap/Form"
-
 import "./EditProfileForm.css"
 class EditProfileForm extends Component {
   constructor(props) {
@@ -54,6 +53,10 @@ class EditProfileForm extends Component {
       .catch((err) => console.log(err))
   }
 
+  checkPlatform = (platform) => {
+    return this.state.platforms.includes(platform)
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -71,10 +74,42 @@ class EditProfileForm extends Component {
           </Form.Group>
           <Form.Group controlId="formBasicCheckbox">
             <Form.Label>Platforms</Form.Label>
-            <Form.Check id="1" name="platforms" value="SNES" onChange={this.handleChecks} type="checkbox" label="SNES" />
-            <Form.Check id="2" name="platforms" value="Sega Megadrive" onChange={this.handleChecks} type="checkbox" label="Sega Megadrive" />
-            <Form.Check id="3" name="platforms" value="Sega Saturn" onChange={this.handleChecks} type="checkbox" label="Sega Saturn" />
-            <Form.Check id="4" name="platforms" value="Arcade" onChange={this.handleChecks} type="checkbox" label="Arcade" />
+            <Form.Check
+              id="1"
+              name="platforms"
+              checked={this.checkPlatform("SNES")}
+              value="SNES"
+              onChange={this.handleChecks}
+              type="checkbox"
+              label="SNES"
+            />
+            <Form.Check
+              id="2"
+              name="platforms"
+              checked={this.checkPlatform("Sega Megadrive")}
+              value="Sega Megadrive"
+              onChange={this.handleChecks}
+              type="checkbox"
+              label="Sega Megadrive"
+            />
+            <Form.Check
+              id="3"
+              name="platforms"
+              checked={this.checkPlatform("Sega Saturn")}
+              value="Sega Saturn"
+              onChange={this.handleChecks}
+              type="checkbox"
+              label="Sega Saturn"
+            />
+            <Form.Check
+              id="4"
+              name="platforms"
+              checked={this.checkPlatform("Arcade")}
+              value="Arcade"
+              onChange={this.handleChecks}
+              type="checkbox"
+              label="Arcade"
+            />
           </Form.Group>
           <Form.Group controlId="img">
             <Form.Label>Avatar (URL)</Form.Label>
