@@ -6,21 +6,22 @@
 }
 
 .event-img {
-    height:100px;
+    height: 100px;
     width: 200px;
     overflow: hidden;
 }
+
 .event-img img {
-object-fit: contain;
-object-position: top;
+    object-fit: contain;
+    object-position: top;
 }
 
-.event-content h4{
-     font-family: "VT323",
-     sans-serif;
-     color: #1292B9;
+.event-content h4 {
+    font-family: "VT323",
+        sans-serif;
+    color: #1292B9;
 }
 
-.event-buttons .myButton{
+.event-buttons .myButton {
     margin-top: 16px;
 }

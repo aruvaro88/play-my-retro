@@ -70,18 +70,20 @@ class EventDetails extends Component {
   addOwnerAsFriend(ownerId) {
     this.userService
       .addUserAsFriend(this.props.loggedInUser._id, ownerId)
-      .then(() => this.setState({ weAreFriends: true }))
+      .then(() => this.props.setTheUser({...this.props.loggedInUser, friends: [...this.props.loggedInUser.friends, ownerId]}))
+      .then(() => this.checkUserFriends())
       .catch((err) => console.log(err))
   }
-  removeOwnerFromFriends = () => {
-    const idx = this.props.loggedInUser.friends.indexOf(this.state.owner._id)
+
+  removeOwnerFromFriends = (ownerId) => {
+    const idx = this.props.loggedInUser.friends.indexOf(ownerId)
     this.props.loggedInUser.friends.splice(idx, 1)
-    this.setState({ weAreFriends: false }, () => {
-      this.userService
-        .editUser(this.props.loggedInUser._id, this.props.loggedInUser)
-        .then(() => this.checkUserFriends())
-        .catch((err) => console.log(err))
-    })
+    this.userService
+      .editUser(this.props.loggedInUser._id, this.props.loggedInUser)
+      .then((response) => this.props.setTheUser(response.data))
+      .then(() => this.checkUserFriends())
+      .catch((err) => console.log(err))
+    
   }
 
   pushUserToEvent() {
@@ -152,7 +154,7 @@ class EventDetails extends Component {
             <OwnerInfo
               {...this.state}
               closeModal={() => this.handleModal(false)}
-              removeOwnerFromFriends={() => this.removeOwnerFromFriends}
+              removeOwnerFromFriends={() => this.removeOwnerFromFriends(this.state.owner._id)}
               addOwnerAsFriend={() => this.addOwnerAsFriend(this.state.owner._id)}
             />
           )

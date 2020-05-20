@@ -27,7 +27,7 @@ console.log(this.props)
         <div className="form-buttons">
           {this.props.weAreFriends ? (
             <>
-              <button onClick={() => this.props.removeOwnerFromFriends()} className="myButtonBlue">
+              <button onClick={() => this.props.removeOwnerFromFriends(this.state.id)} className="myButtonBlue">
                 Leave friend
               </button>
             </>

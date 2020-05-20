@@ -265,4 +265,10 @@ const comments = [
     event: "",
   },
 ]
+
 let userIdArray = []
+let eventIdArray = []
+let commentIdArray = []
+
+let eventPromise = Event.create(events)
+let commentPromise = Comment.create(comments)

@@ -43,9 +43,19 @@ class App extends Component {
           <Route path="/login" render={(props) => <LoginForm {...props} setTheUser={this.setTheUser} />} />
           <Route
             path="/profile"
-            render={(props) => (this.state.loggedInUser ? <Profile {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} /> : <LoginForm {...props} setTheUser={this.setTheUser} />)}
+            render={(props) =>
+              this.state.loggedInUser ? (
+                <Profile {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
+              ) : (
+                <LoginForm {...props} setTheUser={this.setTheUser} />
+              )
+            }
           />
-          <Route path="/events/:id" exact render={(props) => <EventDetails {...props} loggedInUser={this.state.loggedInUser} />} />
+          <Route
+            path="/events/:id"
+            exact
+            render={(props) => <EventDetails {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />}
+          />
         </Switch>
         <Footer />
       </>

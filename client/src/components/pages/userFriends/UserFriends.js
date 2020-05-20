@@ -23,19 +23,21 @@ class UserFriends extends Component {
 
   render() {
     return (
-      <article className="friends-card">
-        {this.state.user.friends &&
-          this.state.user.friends.map((elm) => (
-            <article className="friends-avatar">
-              <figure className="card-img">
-                <img src={elm.avatar} alt="meh" />
-              </figure>
-              <article className="friends-content">
-                <h4>{elm.username}</h4>
+      <main className="display-friends">
+        <article className="friends-card">
+          {this.state.user.friends &&
+            this.state.user.friends.map((elm) => (
+              <article className="friends-avatar">
+                <figure className="card-img">
+                  <img src={elm.avatar} alt="meh" />
+                </figure>
+                <article className="friends-content">
+                  <h4>{elm.username}</h4>
+                </article>
               </article>
-            </article>
-          ))}
-      </article>
+            ))}
+        </article>
+      </main>
     )
   }
 }
