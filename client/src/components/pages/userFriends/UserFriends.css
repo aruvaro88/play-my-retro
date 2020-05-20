@@ -1,4 +1,7 @@
-
+.display-friends{
+    display: flex;
+    flex-wrap: wrap;
+}
 .friends-card{
 border: 1px solid #1292B9;
 padding: 24px;

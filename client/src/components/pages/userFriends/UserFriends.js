@@ -24,9 +24,9 @@ class UserFriends extends Component {
   render() {
     return (
       <main className="display-friends">
-        <article className="friends-card">
-          {this.state.user.friends &&
-            this.state.user.friends.map((elm) => (
+        {this.state.user.friends &&
+          this.state.user.friends.map((elm) => (
+            <article className="friends-card">
               <article className="friends-avatar">
                 <figure className="card-img">
                   <img src={elm.avatar} alt="meh" />
@@ -35,8 +35,8 @@ class UserFriends extends Component {
                   <h4>{elm.username}</h4>
                 </article>
               </article>
-            ))}
-        </article>
+            </article>
+          ))}
       </main>
     )
   }
