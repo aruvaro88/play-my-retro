@@ -5,14 +5,16 @@ class OwnerInfo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      avatar: this.props.avatar,
-      username: this.props.username,
-      friends: this.props.friends,
+      id: this.props.owner._id,
+      avatar: this.props.owner.avatar,
+      username: this.props.owner.username,
+      friends: this.props.owner.friends,
       platforms: this.props.platforms,
     }
   }
 
   render() {
+console.log(this.props)
     return (
       <div className="owner-info-card">
         <figure className="owner-avatar">
@@ -23,9 +25,17 @@ class OwnerInfo extends Component {
           <p>{this.state.platforms}</p>
         </article>
         <div className="form-buttons">
-          <button className="myButton" >
-            Add as friend
-          </button>
+          {this.props.weAreFriends ? (
+            <>
+              <button onClick={() => this.props.removeOwnerFromFriends()} className="myButtonBlue">
+                Leave friend
+              </button>
+            </>
+          ) : (
+            <button onClick={() => this.props.addOwnerAsFriend(this.state.id)} className="myButton">
+              Add as friend
+            </button>
+          )}
         </div>
       </div>
     )

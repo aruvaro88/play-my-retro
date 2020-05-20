@@ -10,4 +10,5 @@ export default class services {
 
   editUser = (id, theUser) => this.service.post(`/editUser/${id}`, theUser)
   getUser = (id) => this.service.get(`/getuser/${id}`)
+  addUserAsFriend = (userId, friendId) => this.service.post(`/adduserasfriend/${userId}/${friendId}`)
 }

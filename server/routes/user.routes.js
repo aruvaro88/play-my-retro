@@ -16,5 +16,14 @@ router.get("/getuser/:id", (req, res, next) => {
     .then((data) => res.json(data))
     .catch((err) => (err ? res.status(500).json({ message: "Error fetching the user" }) : null))
 })
-  
+
+router.post("/adduserasfriend/:id/:friendid", (req, res, next) => {
+  User.findByIdAndUpdate(req.params.id, { $push: { friends: req.params.friendid } })
+    .then((data) => {
+      console.log("ruta del back ejecutada")
+      res.json(data)
+    })
+    .catch((err) => (err ? res.status(500).json({ message: "Error fetching the user" }) : null))
+})
+
 module.exports = router

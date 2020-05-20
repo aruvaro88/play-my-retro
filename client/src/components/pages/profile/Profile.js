@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import ProfileNav from "../profileNav/ProfileNav"
 import { Switch, Route } from "react-router-dom"
 import "./Profile.css"

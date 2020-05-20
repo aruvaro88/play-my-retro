@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import EventService from "../../../services/event.service"
 import CommentService from "../../../services/comment.service"
+import UserService from "../../../services/user.service"
 import EditEventForm from "../editEventForm/EditEventForm"
 import CommentForm from "../commentForm/CommentForm"
 import CommentCard from "../../ui/commentCard/CommentCard"
@@ -21,6 +22,7 @@ class EventDetails extends Component {
         show: false,
         text: "",
       },
+      weAreFriends: "",
       userOnEvent: "",
       comments: [],
       lat: "",
@@ -28,6 +30,7 @@ class EventDetails extends Component {
     }
     this.eventService = new EventService()
     this.commentService = new CommentService()
+    this.userService = new UserService()
   }
   handleModal = (visible, modalName) => this.setState({ modalShow: visible, modalName: modalName })
 
@@ -38,10 +41,16 @@ class EventDetails extends Component {
       .then((response) => {
         this.getCommentsByEvent(id)
         this.getOwnerInfo(response.data.owner)
-        this.setState(response.data, () => this.checkUserAssistance())
+        this.setState(response.data, () => this.checkStatus())
       })
       .catch((err) => console.log(err))
   }
+
+  checkStatus() {
+    this.checkUserAssistance()
+    this.checkUserFriends()
+  }
+
   checkUserAssistance() {
     if (this.state.assistants.some((elm) => elm === this.props.loggedInUser._id)) {
       this.setState({ userOnEvent: true })
@@ -50,10 +59,34 @@ class EventDetails extends Component {
     }
   }
 
+  checkUserFriends() {
+    if (this.props.loggedInUser.friends.some((elm) => elm === this.state.owner._id)) {
+      this.setState({ weAreFriends: true })
+    } else {
+      this.setState({ weAreFriends: false })
+    }
+  }
+
+  addOwnerAsFriend(ownerId) {
+    this.userService
+      .addUserAsFriend(this.props.loggedInUser._id, ownerId)
+      .then(() => this.setState({ weAreFriends: true }))
+      .catch((err) => console.log(err))
+  }
+  removeOwnerFromFriends = () => {
+    const idx = this.props.loggedInUser.friends.indexOf(this.state.owner._id)
+    this.props.loggedInUser.friends.splice(idx, 1)
+    this.setState({ weAreFriends: false }, () => {
+      this.userService
+        .editUser(this.props.loggedInUser._id, this.props.loggedInUser)
+        .then(() => this.checkUserFriends())
+        .catch((err) => console.log(err))
+    })
+  }
+
   pushUserToEvent() {
     this.eventService
       .pushUserToEvent(this.props.match.params.id, this.props.loggedInUser._id)
-      //.then(response => console.log(response.data.assistants))
       .then(() => this.setState({ assistants: [...this.state.assistants, this.props.loggedInUser._id] }, () => this.checkUserAssistance()))
       .catch((err) => console.log(err))
   }
@@ -65,7 +98,7 @@ class EventDetails extends Component {
     this.setState({ assistants: assistantsCopy }, () => {
       this.eventService
         .editEvent(this.props.match.params.id, this.state)
-        .then(()=> this.checkUserAssistance())
+        .then(() => this.checkUserAssistance())
         .catch((err) => console.log(err))
     })
   }
@@ -115,7 +148,14 @@ class EventDetails extends Component {
             />
           )
         case "ownerInfo":
-          return <OwnerInfo {...this.state.owner} closeModal={() => this.handleModal(false)} />
+          return (
+            <OwnerInfo
+              {...this.state}
+              closeModal={() => this.handleModal(false)}
+              removeOwnerFromFriends={() => this.removeOwnerFromFriends}
+              addOwnerAsFriend={() => this.addOwnerAsFriend(this.state.owner._id)}
+            />
+          )
         default:
           return null
       }

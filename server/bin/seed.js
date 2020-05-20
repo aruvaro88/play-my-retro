@@ -45,7 +45,7 @@ for (let i = 1; i <= 10; i++) {
   usersArray.push({
     username: faker.name.firstName(),
     password: bcrypt.hashSync("admin", salt),
-    avatar: faker.internet.avatar(),
+    avatar: "https://res.cloudinary.com/daxdpwqbb/image/upload/v1589969335/playMyRetro/djvstock190103456_cyhn9c.jpg",
     email: faker.internet.email(),
     platforms: faker.random.arrayElement(["SNES", "Sega Megadrive", "Sega Saturn", "Arcade"]),
   })
