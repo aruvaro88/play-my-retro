@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Modal from "react-bootstrap/Modal"
 import Toast from "react-bootstrap/Toast"
+import { Parallax } from "react-scroll-parallax"
 
 import "./EventList.css"
 

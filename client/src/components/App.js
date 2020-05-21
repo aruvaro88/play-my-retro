@@ -12,6 +12,7 @@ import Footer from "./ui/footer/Footer"
 import LoginForm from "./pages/login/LoginForm"
 import AuthService from "../services/auth.service"
 import Profile from "./pages/profile/Profile"
+import { ParallaxProvider } from "react-scroll-parallax"
 
 class App extends Component {
   constructor() {
@@ -36,26 +37,29 @@ class App extends Component {
       <>
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
         <Switch>
-          <Route path="/" exact render={() => <Home />} />
-          <Route path="/events" exact render={() => <EventList loggedInUser={this.state.loggedInUser} />} />
-          <Route path="/events/createEvent" render={() => <EventForm />} />
-          <Route path="/signup" render={(props) => <SignupForm {...props} setTheUser={this.setTheUser} />} />
-          <Route path="/login" render={(props) => <LoginForm {...props} setTheUser={this.setTheUser} />} />
-          <Route
-            path="/profile"
-            render={(props) =>
-              this.state.loggedInUser ? (
-                <Profile {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <LoginForm {...props} setTheUser={this.setTheUser} />
-              )
-            }
-          />
-          <Route
-            path="/events/:id"
-            exact
-            render={(props) => <EventDetails {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />}
-          />
+          <ParallaxProvider>
+            <Route path="/" exact render={() => <Home />} />
+
+            <Route path="/events" exact render={() => <EventList loggedInUser={this.state.loggedInUser} />} />
+            <Route path="/events/createEvent" render={() => <EventForm />} />
+            <Route path="/signup" render={(props) => <SignupForm {...props} setTheUser={this.setTheUser} />} />
+            <Route path="/login" render={(props) => <LoginForm {...props} setTheUser={this.setTheUser} />} />
+            <Route
+              path="/profile"
+              render={(props) =>
+                this.state.loggedInUser ? (
+                  <Profile {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
+                ) : (
+                  <LoginForm {...props} setTheUser={this.setTheUser} />
+                )
+              }
+            />
+            <Route
+              path="/events/:id"
+              exact
+              render={(props) => <EventDetails {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />}
+            />
+          </ParallaxProvider>
         </Switch>
         <Footer />
       </>
