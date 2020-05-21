@@ -9,54 +9,67 @@ import "./Home.css"
 class Home extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      videoURL: "/img/header-video.mp4",
+    }
   }
 
   render() {
     return (
       <main className="homepage">
-        <Container>
-          <Row as="header" className="homeHeader">
+        <header className="homeHeader">
+          <div className="video-container">
+            <video autoPlay loop muted className="background-video">
+              <source src={this.state.videoURL} type="video/mp4" />
+            </video>
+          </div>
+          <Container>
+            <Row>
             <Col as="article" md={6}>
-              <h1>Play My Retro</h1>
-              <h3>Where games and people meet</h3>
-              <Link to="/signup" className="my-button">
-                Get Started
-              </Link>
+              <div>
+                <h1>Play My Retro</h1>
+                <h3>Where games and people meet</h3>
+                <Link to="/signup" className="my-button">
+                  Get Started
+                </Link>
+              </div>
             </Col>
             <Col as="article" md={6}>
               <figure className="game-controller">
                 <img src="/img/game-controller.svg" alt="game Controller" />
               </figure>
             </Col>
-          </Row>
+            </Row>
+          </Container>
+        </header>
+        <Container>
           <Row as="section" className="works">
             <h1>How it works!</h1>
             <article className="display-card">
               <article className="home-card">
                 <figure className="icon">
-                  <img src="/img/edit-tools.svg" alt="signupicon"/>
+                  <img src="/img/edit-tools.svg" alt="signupicon" />
                 </figure>
                 <h4>Sign Up</h4>
                 <p>Get into our awesome comunity</p>
               </article>
               <article className="home-card">
                 <figure className="icon">
-                  <img className="calendar" src="/img/calendar-day-solid.svg" alt="createicon"/>
+                  <img className="calendar" src="/img/calendar-day-solid.svg" alt="createicon" />
                 </figure>
                 <h4>Create Events</h4>
                 <p>Create events to play videogames</p>
               </article>
               <article className="home-card">
                 <figure className="icon">
-                  <img src="/img/gamepad-solid.svg" alt="playicon"/>
+                  <img src="/img/gamepad-solid.svg" alt="playicon" />
                 </figure>
                 <h4>Play</h4>
                 <p>Assist to other events and play with people</p>
               </article>
               <article className="home-card">
                 <figure className="icon">
-                  <img src="/img/comments-solid.svg" alt="commenticon"/>
+                  <img src="/img/comments-solid.svg" alt="commenticon" />
                 </figure>
                 <h4>Comments</h4>
                 <p>Write about events you liked most</p>
@@ -67,7 +80,7 @@ class Home extends Component {
             <Col as="article" md={6}>
               <article>
                 <figure className="composition">
-                  <img src="/img/games-comp.png" alt="compositionimg"/>
+                  <img src="/img/games-comp.png" alt="compositionimg" />
                 </figure>
               </article>
             </Col>

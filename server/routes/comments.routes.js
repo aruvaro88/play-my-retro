@@ -2,31 +2,31 @@ const express = require("express")
 const router = express.Router()
 
 const Comment = require("../models/comment.model")
-const checkAuth = (req, res, next) => (req.isAuthenticated() ? next() : res.redirect("/"))
+const { ensureLoggedIn } = require("connect-ensure-login")
 
 router.get("/getcommentsbyevent/:id", (req, res, next) => {
   Comment.find({ event: req.params.id })
     .populate("createdBy")
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error fetching event comments" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
 router.get("/getcommentsbyuser/:id", (req, res, next) => {
   Comment.find({ createdBy: req.params.id })
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error fetching user comments" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/createcomment", (req, res, next) => {
+router.post("/createcomment", ensureLoggedIn(), (req, res, next) => {
   Comment.create(req.body)
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error creating that comment" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/removecomment/:id", (req, res, next) => {
+router.post("/removecomment/:id", ensureLoggedIn(), (req, res, next) => {
   Comment.findByIdAndRemove(req.params.id)
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error removing that comment" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
 

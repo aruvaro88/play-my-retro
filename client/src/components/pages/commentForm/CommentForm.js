@@ -27,14 +27,13 @@ class CommentForm extends Component {
     this.commentService
       .createComment(this.state)
       .then(() => this.props.finishEventPost())
-      .catch((err) => console.log(err))
+      .catch((err) => console.log({ err }))
   }
 
     render() {
-        console.log(this.props)
     return (
       <Container as="section">
-        <h1>New Event</h1>
+        <h1>New Comment</h1>
         <hr />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="title">

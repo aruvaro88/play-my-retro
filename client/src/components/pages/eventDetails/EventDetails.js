@@ -20,8 +20,6 @@ class EventDetails extends Component {
       weAreFriends: "",
       userOnEvent: "",
       comments: [],
-      lat: "",
-      lng: "",
     }
     this.eventService = new EventService()
     this.commentService = new CommentService()

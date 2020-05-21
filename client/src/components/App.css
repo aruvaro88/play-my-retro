@@ -11,6 +11,9 @@ h3 {
   font-family: "VT323", sans-serif;
 }
 
+h1 {
+  color: #1292B9;
+}
 
 p {
   font-family: 'Share Tech Mono',
@@ -46,6 +49,19 @@ button {
   padding: 10px 30px;
   display: block;
 }
+.my-button:hover {
+  width: 197px;
+  background-color: #F7CA18;
+  color: black;
+  font-family: "VT323",
+    sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  line-height: 18px;
+  text-align: center;
+  padding: 10px 30px;
+  display: block;
+}
 
 .my-mini-button {
   color: #1292B9;
@@ -58,9 +74,32 @@ button {
   display: block;
   margin: 0 auto;
 }
-
+.my-mini-button:hover {
+  color: #0D7282;
+  font-family: "VT323",
+    sans-serif;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  line-height: 18px;
+  padding: 10px 30px;
+  display: block;
+  margin: 0 auto;
+}
 .my-button-blue {
   background-color: #1292B9;
+  width: 197px;
+  color: #FFFFFF;
+  font-family: "VT323",
+    sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  line-height: 18px;
+  text-align: center;
+  padding: 10px 30px;
+  display: block;
+}
+.my-button-blue:hover {
+  background-color: #0D7282;
   width: 197px;
   color: #FFFFFF;
   font-family: "VT323",
@@ -130,7 +169,7 @@ img {
   color: #1292B9
 }
 
-.modal-form h1{
+.modal-form h1 {
 
   color: #1292B9
 }

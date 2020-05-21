@@ -59,7 +59,6 @@ class EventForm extends Component {
   }
 
   render() {
-    console.log(this.props.loggedInUser)
     return (
       <Container as="section">
         <h1>New Event</h1>
@@ -79,11 +78,11 @@ class EventForm extends Component {
           </Form.Group>
           <Form.Group controlId="date">
             <Form.Label>Date</Form.Label>
-            <Form.Control className="input" name="date" type="date" value={this.state.date} onChange={this.handleChange} />
+            <Form.Control className="datepicker" name="date" type="text" value={this.state.date} onChange={this.handleChange} />
           </Form.Group>
           <Form.Control as="select">
-            {this.props.loggedInUser.platforms.map((elm) => (
-              <option>{elm}</option>
+            {this.props.loggedInUser.platforms.map((elm, idx) => (
+              <option key={idx}>{elm}</option>
             ))}
           </Form.Control>
           <Form.Group controlId="game">

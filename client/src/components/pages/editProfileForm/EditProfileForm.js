@@ -58,7 +58,6 @@ class EditProfileForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <main className="edit-form">
         <h1>Edit Profile</h1>

@@ -2,42 +2,41 @@ const express = require("express")
 const router = express.Router()
 
 const Event = require("../models/event.model")
-const checkAuth = (req, res, next) => (req.isAuthenticated() ? next() : res.redirect("/login"))
 
-const ensureLogin = require("connect-ensure-login")
+const { ensureLoggedIn } = require("connect-ensure-login")
 
 
 router.get("/getAllEvents", (req, res, next) => {
   Event.find()
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error fetching events" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
 router.get("/getEvent/:id", (req, res, next) => {
   Event.findById(req.params.id)
     .populate("owner")
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error fetching the event" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/createEvent", (req, res, next) => {
+router.post("/createEvent", ensureLoggedIn(), (req, res, next) => {
   Event.create(req.body)
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error creating that event" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/removeEvent/:id", (req, res, next) => {
+router.post("/removeEvent/:id", ensureLoggedIn(), (req, res, next) => {
   Event.findByIdAndRemove(req.params.id)
     .populate("owner")
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error removing that event" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/editEvent/:id", (req, res, next) => {
+router.post("/editEvent/:id", ensureLoggedIn(), (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, req.body)
     .populate("owner")
     .then((data) => res.json(data))
-    .catch((err) => (err ? res.status(500).json({ message: "Error updating the event" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
 router.get("/getuserevents/:id", (req, res, next) => {
@@ -46,16 +45,16 @@ router.get("/getuserevents/:id", (req, res, next) => {
       console.log(data)
       res.json(data)
     })
-    .catch((err) => (err ? res.status(500).json({ message: "Error fetching user events" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
-router.post("/assisttoevents/:id/:userid", (req, res, next) => {
+router.post("/assisttoevents/:id/:userid", ensureLoggedIn(), (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, { $push: { assistants: req.params.userid } })
-   .then((data) => {
+    .then((data) => {
       console.log(data)
       res.json(data)
     })
-    .catch((err) => (err ? res.status(500).json({ message: "Error with assistance" }) : null))
+    .catch((err) => next(new Error(err)))
 })
 
 module.exports = router

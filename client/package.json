@@ -11,11 +11,14 @@
     "bootstrap-react": "^0.3.1",
     "dotenv-cli": "^3.1.0",
     "faker": "^4.1.0",
+    "materialize-css": "^1.0.0-rc.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-date-picker": "^8.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "vivus": "^0.4.5"
   },
   "scripts": {
     "start": "dotenv -e .env.dev react-scripts start",

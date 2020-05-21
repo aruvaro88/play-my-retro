@@ -38,7 +38,7 @@ class UserFriends extends Component {
       <main className="display-friends">
         {this.state.user.friends &&
           this.state.user.friends.map((elm, idx) => (
-            <article className="friends-card">
+            <article key={idx} className="friends-card">
               <article className="friends-avatar">
                 <figure className="card-img">
                   <img src={elm.avatar} alt="meh" />
