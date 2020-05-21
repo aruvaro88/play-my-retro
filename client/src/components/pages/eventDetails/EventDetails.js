@@ -34,7 +34,7 @@ class EventDetails extends Component {
       .then((response) => {
         this.getCommentsByEvent(id)
         this.getOwnerInfo(response.data.owner)
-        this.setState(response.data, () => this.checkStatus())
+        this.setState(response.data, () => this.props.loggedInUser && this.checkStatus())
       })
       .catch((err) => console.log(err))
   }
@@ -63,7 +63,7 @@ class EventDetails extends Component {
   addOwnerAsFriend(ownerId) {
     this.userService
       .addUserAsFriend(this.props.loggedInUser._id, ownerId)
-      .then(() => this.props.setTheUser({...this.props.loggedInUser, friends: [...this.props.loggedInUser.friends, ownerId]}))
+      .then(() => this.props.setTheUser({ ...this.props.loggedInUser, friends: [...this.props.loggedInUser.friends, ownerId] }))
       .then(() => this.checkUserFriends())
       .catch((err) => console.log(err))
   }
@@ -100,7 +100,6 @@ class EventDetails extends Component {
   getOwnerInfo(ownerData) {
     this.setState({ owner: ownerData })
   }
-
 
   finishEventPost = () => {
     this.getEventInfo()
