@@ -63,6 +63,11 @@
     object-fit: cover;
 }
 
+.event-card .card-content {
+    padding: 24px;
+}
+
+
 .event-card .card-buttons {
     display: flex;
     flex-direction: column;
