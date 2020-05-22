@@ -22,17 +22,6 @@
   margin-bottom: 40px;
 }
 
-/* .background-video {
-  opacity: 40%;
-  width: 100vw;
-} */
-
-.video-container {
-  margin-top: -300px;
-  width: 100%;
-  z-index: -999;
-  position: absolute;
-}
 
 .homepage .homeHeader {
   padding: 200px 0 0;

@@ -20,9 +20,15 @@ p {
     monospace;
   font-weight: 400;
 }
+.video-container {
+  margin-top: -300px;
+  width: 100%;
+  z-index: -999;
+  position: absolute;
+  opacity: 40%;
+}
 
 .background-video {
-  /* opacity: 40% !important; */
   width: 100vw;
 }
 
