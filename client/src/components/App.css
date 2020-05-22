@@ -21,6 +21,11 @@ p {
   font-weight: 400;
 }
 
+.background-video {
+  opacity: 40% !important;
+  width: 100vw;
+}
+
 .toast {
   position: fixed;
   bottom: 10px;
@@ -49,6 +54,7 @@ button {
   padding: 10px 30px;
   display: block;
 }
+
 .my-button:hover {
   width: 197px;
   background-color: #F7CA18;
@@ -74,6 +80,7 @@ button {
   display: block;
   margin: 0 auto;
 }
+
 .my-mini-button:hover {
   color: #0D7282;
   font-family: "VT323",
@@ -85,6 +92,7 @@ button {
   display: block;
   margin: 0 auto;
 }
+
 .my-button-blue {
   background-color: #1292B9;
   width: 197px;
@@ -98,6 +106,7 @@ button {
   padding: 10px 30px;
   display: block;
 }
+
 .my-button-blue:hover {
   background-color: #0D7282;
   width: 197px;

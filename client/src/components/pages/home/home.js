@@ -11,7 +11,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      videoURL: "/img/header-video2-compress.mp4",
+      videoURL: "https://res.cloudinary.com/daxdpwqbb/video/upload/v1590137257/playMyRetro/header-video2-compress_zveehi.mp4",
     }
   }
 
