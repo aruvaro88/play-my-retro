@@ -16,7 +16,7 @@ If you want, you can check the app [here](https://play-my-retro.herokuapp.com/)
 There are some default registered users you can use to test, but you can sign up to do it.
 
 ```
-Users: aru, varo, almu, dena, fer, nando
+Users: aru, varo, almu, dena, fer, nanda
 password: admin
 ```
 
